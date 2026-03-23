@@ -1,3 +1,4 @@
+"""Load game data from JSON files into model objects."""
 import json
 from pathlib import Path
 from models import Creature, Expedition, ExpeditionTier
@@ -9,9 +10,10 @@ def load_creatures(
     path: Path = DATA_DIR / "creatures.json",
     levels_path: Path = DATA_DIR / "creature_levels.json",
 ) -> list[Creature]:
-    with open(path) as f:
+    """Load creatures roster and their current levels."""
+    with open(path, encoding="utf-8") as f:
         raw = json.load(f)
-    with open(levels_path) as f:
+    with open(levels_path, encoding="utf-8") as f:
         levels = json.load(f)
     return [
         Creature(
@@ -31,9 +33,10 @@ def load_expeditions(
     path: Path = DATA_DIR / "expeditions.json",
     progress_path: Path = DATA_DIR / "expedition_progress.json",
 ) -> list[Expedition]:
-    with open(path) as f:
+    """Load expedition definitions, filtered to unlocked tiers only."""
+    with open(path, encoding="utf-8") as f:
         raw = json.load(f)
-    with open(progress_path) as f:
+    with open(progress_path, encoding="utf-8") as f:
         progress = json.load(f)
     expeditions = []
     for e in raw:

@@ -209,3 +209,5 @@ __marimo__/
 # Koltera personal save data
 data/creature_levels.json
 data/expedition_progress.json
+
+.claude

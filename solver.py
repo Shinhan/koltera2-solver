@@ -1,3 +1,4 @@
+"""Job and expedition assignment solver."""
 from itertools import combinations
 from models import (
     Creature, Expedition, ExpeditionTier, JobAssignment, ExpeditionAssignment, SolverResult, JOBS
@@ -14,7 +15,7 @@ def assign_jobs(creatures: list[Creature]) -> list[JobAssignment]:
     assigned: set[str] = set()
     for job in JOBS:
         candidates = [c for c in creatures if c.name not in assigned]
-        chosen = max(candidates, key=lambda c: (c.proficiency(job), c.level))
+        chosen = max(candidates, key=lambda c, j=job: (c.proficiency(j), c.level))
         assignments.append(JobAssignment(job=job, creature=chosen))
         assigned.add(chosen.name)
     return assignments
@@ -28,7 +29,32 @@ def _best_tier(party: list[Creature], expedition: Expedition) -> tuple[Expeditio
     )
 
 
-def solve_expeditions(pool: list[Creature], expeditions: list[Expedition]) -> list[ExpeditionAssignment]:
+def _find_best_for_creature(
+    creature: Creature,
+    others: list[Creature],
+    avail_exps: list[Expedition],
+) -> tuple[Expedition, ExpeditionTier, list[Creature], float] | None:
+    """Return (expedition, tier, party, xps) maximising XP/s with creature in the party."""
+    best_xps = -1.0
+    best: tuple[Expedition, ExpeditionTier, list[Creature], float] | None = None
+    for exp in avail_exps:
+        for extra in range(3):  # 0 companions, 1 companion, 2 companions
+            party_options = (
+                [[creature]]
+                if extra == 0
+                else [[creature] + list(comp) for comp in combinations(others, extra)]
+            )
+            for party in party_options:
+                tier, xps = _best_tier(party, exp)
+                if xps > best_xps:
+                    best_xps = xps
+                    best = (exp, tier, party, xps)
+    return best
+
+
+def solve_expeditions(
+    pool: list[Creature], expeditions: list[Expedition]
+) -> list[ExpeditionAssignment]:
     """
     Level-priority greedy solver:
       Process creatures from lowest level to highest. Each creature claims the best
@@ -41,39 +67,17 @@ def solve_expeditions(pool: list[Creature], expeditions: list[Expedition]) -> li
 
     while available and avail_exps:
         creature = available[0]
-        others = available[1:]
-
-        # Find the best (expedition, party) that includes `creature`.
-        best_xps = -1.0
-        best: tuple[Expedition, ExpeditionTier, list[Creature]] | None = None
-
-        for exp in avail_exps:
-            for extra in range(3):  # 0 companions, 1 companion, 2 companions
-                if extra == 0:
-                    party_options = [[creature]]
-                else:
-                    party_options = [
-                        [creature] + list(comp)
-                        for comp in combinations(others, extra)
-                    ]
-                for party in party_options:
-                    tier, xps = _best_tier(party, exp)
-                    if xps > best_xps:
-                        best_xps = xps
-                        best = (exp, tier, party)
-
+        best = _find_best_for_creature(creature, available[1:], avail_exps)
         if best is None:
             break
-
-        exp, tier, party = best
+        exp, tier, party, best_xps = best
         ps = party_score(party, exp)
-        t = completion_time(ps, tier.difficulty)
         assignments.append(ExpeditionAssignment(
             expedition=exp,
             tier=tier,
             party=party,
             xp_per_second=best_xps,
-            time_minutes=t,
+            time_minutes=completion_time(ps, tier.difficulty),
         ))
         for c in party:
             available.remove(c)
@@ -83,6 +87,7 @@ def solve_expeditions(pool: list[Creature], expeditions: list[Expedition]) -> li
 
 
 def solve(creatures: list[Creature], expeditions: list[Expedition]) -> SolverResult:
+    """Run job assignment then expedition assignment and return the full result."""
     job_assignments = assign_jobs(creatures)
     job_pool = {ja.creature.name for ja in job_assignments}
 
