@@ -1,0 +1,226 @@
+[
+  {
+    "name": "Expedition Training",
+    "preferred_types": ["wind"],
+    "opposing_types": ["water"],
+    "preferred_trait": "Learner",
+    "stat_weights": { "POW": 0.25, "GRT": 0.25, "AGI": 0.25, "SMT": 0.25, "LOT": 0.00, "LCK": 0.00 },
+    "tiers": [
+      { "difficulty": 1,   "xp_reward": 300 },
+      { "difficulty": 1,   "xp_reward": 360 },
+      { "difficulty": 2,   "xp_reward": 420 },
+      { "difficulty": 2,   "xp_reward": 480 },
+      { "difficulty": 3,   "xp_reward": 540 }
+    ]
+  },
+  {
+    "name": "Clear the Path",
+    "preferred_types": ["wind"],
+    "opposing_types": ["earth"],
+    "preferred_trait": "Gatherer",
+    "stat_weights": { "POW": 0.60, "GRT": 0.00, "AGI": 0.40, "SMT": 0.00, "LOT": 0.00, "LCK": 0.00 },
+    "tiers": [
+      { "difficulty": 50,  "xp_reward": 400 },
+      { "difficulty": 75,  "xp_reward": 480 },
+      { "difficulty": 100, "xp_reward": 560 },
+      { "difficulty": 125, "xp_reward": 640 },
+      { "difficulty": 150, "xp_reward": 720 }
+    ]
+  },
+  {
+    "name": "Water Delivery",
+    "preferred_types": ["fire", "earth"],
+    "opposing_types": ["water"],
+    "preferred_trait": "Heat Resist",
+    "stat_weights": { "POW": 0.00, "GRT": 0.40, "AGI": 0.40, "SMT": 0.20, "LOT": 0.00, "LCK": 0.00 },
+    "tiers": [
+      { "difficulty": 100, "xp_reward": 450 },
+      { "difficulty": 150, "xp_reward": 540 },
+      { "difficulty": 200, "xp_reward": 630 },
+      { "difficulty": 250, "xp_reward": 720 },
+      { "difficulty": 300, "xp_reward": 810 }
+    ]
+  },
+  {
+    "name": "Harvest Abandoned Mine",
+    "preferred_types": ["earth"],
+    "opposing_types": ["wind"],
+    "preferred_trait": "Scouting",
+    "stat_weights": { "POW": 0.0, "GRT": 0.0, "AGI": 0.0, "SMT": 0.0, "LOT": 0.50, "LCK": 0.50 },
+    "tiers": [
+      { "difficulty": 300, "xp_reward": 500 },
+      { "difficulty": 450, "xp_reward": 600 },
+      { "difficulty": 600, "xp_reward": 700 },
+      { "difficulty": 750, "xp_reward": 800 },
+      { "difficulty": null, "xp_reward": null }
+    ]
+  },
+  {
+    "name": "Water Rescue",
+    "preferred_types": ["water"],
+    "opposing_types": ["fire", "earth"],
+    "preferred_trait": "Water Breathing",
+    "stat_weights": { "POW": 0.0, "GRT": 0.30, "AGI": 0.70, "SMT": 0.0, "LOT": 0.0, "LCK": 0.0 },
+    "tiers": [
+      { "difficulty": 500,  "xp_reward": 550 },
+      { "difficulty": 750,  "xp_reward": 660 },
+      { "difficulty": 1000, "xp_reward": 770 },
+      { "difficulty": null, "xp_reward": null },
+      { "difficulty": null, "xp_reward": null }
+    ]
+  },
+  {
+    "name": "Attack Poacher Camps",
+    "preferred_types": ["wind"],
+    "opposing_types": ["earth"],
+    "preferred_trait": "Regeneration",
+    "stat_weights": { "POW": 0.50, "GRT": 0.40, "AGI": 0.10, "SMT": 0.0, "LOT": 0.0, "LCK": 0.0 },
+    "tiers": [
+      { "difficulty": 700,  "xp_reward": 600 },
+      { "difficulty": 1050, "xp_reward": 720 },
+      { "difficulty": 1400, "xp_reward": 840 },
+      { "difficulty": null, "xp_reward": null },
+      { "difficulty": null, "xp_reward": null }
+    ]
+  },
+  {
+    "name": "Rare Material Sighting",
+    "preferred_types": ["fire", "water"],
+    "opposing_types": ["wind"],
+    "preferred_trait": "Night Vision",
+    "stat_weights": { "POW": 0.0, "GRT": 0.0, "AGI": 0.0, "SMT": 0.0, "LOT": 0.80, "LCK": 0.20 },
+    "tiers": [
+      { "difficulty": 900,  "xp_reward": 650 },
+      { "difficulty": 1350, "xp_reward": 780 },
+      { "difficulty": 1800, "xp_reward": 909 },
+      { "difficulty": null, "xp_reward": null },
+      { "difficulty": null, "xp_reward": null }
+    ]
+  },
+  {
+    "name": "Defend Koltera Outpost",
+    "preferred_types": ["wind"],
+    "opposing_types": ["water"],
+    "preferred_trait": "Hard Shell",
+    "stat_weights": { "POW": 0.50, "GRT": 0.50, "AGI": 0.0, "SMT": 0.0, "LOT": 0.0, "LCK": 0.0 },
+    "tiers": [
+      { "difficulty": 1200, "xp_reward": 700 },
+      { "difficulty": 1800, "xp_reward": 840 },
+      { "difficulty": null, "xp_reward": null },
+      { "difficulty": null, "xp_reward": null },
+      { "difficulty": null, "xp_reward": null }
+    ]
+  },
+  {
+    "name": "Sunken Shipwreck Recovery",
+    "preferred_types": ["water"],
+    "opposing_types": ["fire", "earth"],
+    "preferred_trait": "Water Breathing",
+    "stat_weights": { "POW": 0.0, "GRT": 0.0, "AGI": 0.50, "SMT": 0.0, "LOT": 0.50, "LCK": 0.0 },
+    "tiers": [
+      { "difficulty": 1500, "xp_reward": 750 },
+      { "difficulty": 2250, "xp_reward": 900 },
+      { "difficulty": 3000, "xp_reward": 1050 },
+      { "difficulty": null, "xp_reward": null },
+      { "difficulty": null, "xp_reward": null }
+    ]
+  },
+  {
+    "name": "Supply Delivery",
+    "preferred_types": ["wind"],
+    "opposing_types": ["earth"],
+    "preferred_trait": "Camouflage",
+    "stat_weights": { "POW": 0.0, "GRT": 0.0, "AGI": 0.70, "SMT": 0.30, "LOT": 0.0, "LCK": 0.0 },
+    "tiers": [
+      { "difficulty": 1800, "xp_reward": 800 },
+      { "difficulty": 2700, "xp_reward": 960 },
+      { "difficulty": null, "xp_reward": null },
+      { "difficulty": null, "xp_reward": null },
+      { "difficulty": null, "xp_reward": null }
+    ]
+  },
+  {
+    "name": "Rescue Lost Creatures",
+    "preferred_types": ["earth"],
+    "opposing_types": ["wind"],
+    "preferred_trait": "Cold Resist",
+    "stat_weights": { "POW": 0.0, "GRT": 0.70, "AGI": 0.0, "SMT": 0.20, "LOT": 0.0, "LCK": 0.10 },
+    "tiers": [
+      { "difficulty": 3300, "xp_reward": 1000 },
+      { "difficulty": null, "xp_reward": null },
+      { "difficulty": null, "xp_reward": null },
+      { "difficulty": null, "xp_reward": null },
+      { "difficulty": null, "xp_reward": null }
+    ]
+  },
+  {
+    "name": "Discover a Dungeon",
+    "preferred_types": ["water"],
+    "opposing_types": ["fire", "wind"],
+    "preferred_trait": "Poison Resist",
+    "stat_weights": { "POW": 0.0, "GRT": 0.0, "AGI": 0.0, "SMT": 0.40, "LOT": 0.40, "LCK": 0.20 },
+    "tiers": [
+      { "difficulty": 2300, "xp_reward": 850 },
+      { "difficulty": null, "xp_reward": null },
+      { "difficulty": null, "xp_reward": null },
+      { "difficulty": null, "xp_reward": null },
+      { "difficulty": null, "xp_reward": null }
+    ]
+  },
+  {
+    "name": "Recover Lost Supplies",
+    "preferred_types": ["fire", "earth"],
+    "opposing_types": ["water"],
+    "preferred_trait": "Tracking",
+    "stat_weights": { "POW": 0.0, "GRT": 0.0, "AGI": 0.60, "SMT": 0.0, "LOT": 0.40, "LCK": 0.0 },
+    "tiers": [
+      { "difficulty": 2500, "xp_reward": 900 },
+      { "difficulty": null, "xp_reward": null },
+      { "difficulty": null, "xp_reward": null },
+      { "difficulty": null, "xp_reward": null },
+      { "difficulty": null, "xp_reward": null }
+    ]
+  },
+  {
+    "name": "Tracking Rare Creature",
+    "preferred_types": ["fire", "earth"],
+    "opposing_types": ["water"],
+    "preferred_trait": "Tracking",
+    "stat_weights": { "POW": 0.0, "GRT": 0.50, "AGI": 0.40, "SMT": 0.0, "LOT": 0.0, "LCK": 0.10 },
+    "tiers": [
+      { "difficulty": 2900, "xp_reward": 950 },
+      { "difficulty": null, "xp_reward": null },
+      { "difficulty": null, "xp_reward": null },
+      { "difficulty": null, "xp_reward": null },
+      { "difficulty": null, "xp_reward": null }
+    ]
+  },
+  {
+    "name": "Research the Swamp",
+    "preferred_types": ["water"],
+    "opposing_types": ["fire","wind"],
+    "preferred_trait": "Poison Resist",
+    "stat_weights": { "POW": 0.0, "GRT": 0.50, "AGI": 0.0, "SMT": 0.50, "LOT": 0.0, "LCK": 0.0 },
+    "tiers": [
+      { "difficulty": 3800, "xp_reward": 1050 },
+      { "difficulty": null, "xp_reward": null },
+      { "difficulty": null, "xp_reward": null },
+      { "difficulty": null, "xp_reward": null },
+      { "difficulty": null, "xp_reward": null }
+    ]
+  },
+  {
+    "name": "Ancient Water Ruins",
+    "preferred_types": ["water"],
+    "opposing_types": ["fire","earth"],
+    "preferred_trait": "Scouting",
+    "stat_weights": { "POW": 0.0, "GRT": 0.0, "AGI": 0.0, "SMT": 0.30, "LOT": 0.10, "LCK": 0.60 },
+    "tiers": [
+      { "difficulty": 4200, "xp_reward": 1100 },
+      { "difficulty": null, "xp_reward": null },
+      { "difficulty": null, "xp_reward": null },
+      { "difficulty": null, "xp_reward": null },
+      { "difficulty": null, "xp_reward": null }
+    ]
+  }
+]
