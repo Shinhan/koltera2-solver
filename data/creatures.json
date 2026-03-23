@@ -190,5 +190,13 @@
     "trait": "Learner",
     "base_stats": { "POW": 4, "GRT": 4, "AGI": 28, "SMT": 12, "LOT": 8, "LCK": 3 },
     "job_proficiencies": { "Chopping": 2, "Mining": null, "Exploring": 3, "Digging": null, "Fishing": null, "Farming": null }
+  },
+  {
+    "name": "Penny",
+    "tier": 2,
+    "type": "earth",
+    "trait": "Gatherer",
+    "base_stats": { "POW": 26, "GRT": 10, "AGI": 5, "SMT": 5, "LOT": 14, "LCK": 3 },
+    "job_proficiencies": { "Chopping": 3, "Mining": null, "Exploring": null, "Digging": null, "Fishing": null, "Farming": 2 }
   }
 ]

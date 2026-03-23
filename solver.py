@@ -8,13 +8,13 @@ from calculator import xp_per_second, party_score, completion_time
 def assign_jobs(creatures: list[Creature]) -> list[JobAssignment]:
     """
     Assign exactly one creature to each job.
-    Rule: highest proficiency wins; tiebreak = lowest level.
+    Rule: highest proficiency wins; tiebreak = highest level.
     """
     assignments = []
     assigned: set[str] = set()
     for job in JOBS:
         candidates = [c for c in creatures if c.name not in assigned]
-        chosen = min(candidates, key=lambda c: (-c.proficiency(job), c.level))
+        chosen = max(candidates, key=lambda c: (c.proficiency(job), c.level))
         assignments.append(JobAssignment(job=job, creature=chosen))
         assigned.add(chosen.name)
     return assignments

@@ -10,9 +10,8 @@ Optimally assigns creatures to expeditions and jobs in Koltera 2, maximising XP/
 
 ## Setup
 
-1. Copy `data/creatures.json` and edit it to match your roster (stats, types, traits, job proficiencies)
-2. Copy `data/creature_levels.json.example` to `data/creature_levels.json` and set each creature's current level
-3. Copy `data/expedition_progress.json.example` to `data/expedition_progress.json` and set how many tiers you have unlocked per expedition (0 = not unlocked)
+1. Copy `data/creature_levels.json.example` to `data/creature_levels.json` and set each creature's current level
+2. Copy `data/expedition_progress.json.example` to `data/expedition_progress.json` and set how many tiers you have unlocked per expedition (0 = not unlocked)
 
 > `creature_levels.json` and `expedition_progress.json` are personal save data and are gitignored.
 
@@ -35,7 +34,7 @@ Output shows job assignments, then each expedition with its party, score, time, 
 
 ## Contributing expedition data
 
-`expeditions.json` is community data. If you have unlocked tiers or expeditions not yet in the file, please open a PR adding the difficulty and xp_reward values.
+`expeditions.json` and `creatures.json` are community data. If you have unlocked creatures or expeditions not yet in the file, please open a PR with data about them.
 
 ## Score formula
 
@@ -50,4 +49,4 @@ xp_per_second = xp_reward / (party_size × time_minutes × 60)
 
 ## License
 
-[PolyForm Noncommercial 1.0.0](LICENSE)
+[GPL-3.0](LICENSE)
