@@ -22,7 +22,7 @@
 **Job assignment (pre-solve step):**
 - 6 jobs: Chopping, Mining, Exploring, Digging, Fishing, Farming
 - Exactly 1 creature assigned per job; a creature can only hold 1 job
-- For each job: pick creature with highest proficiency (0–10); tiebreak = lowest level
+- For each job: pick creature with highest proficiency (0–10); tiebreak = highest level
 - Job-assigned creatures are removed from the expedition pool before solving
 
 **Expedition tiers:**
@@ -32,21 +32,23 @@
 ## Data
 - 20 expeditions, 5 difficulty tiers each
 - 4 types: water, fire, earth, wind
-- 13+ traits
+- 13 traits
 - 6 stats: POW, GRT, AGI, SMT, LOT, LCK
 - 6 jobs: Chopping, Mining, Exploring, Digging, Fishing, Farming (proficiency 0–10)
 
-## Planned Architecture
-koltera_solver/
+## Architecture
+```
 ├── data/
-│   ├── creatures.json      # Your creature roster
-│   └── expeditions.json    # All 20 expeditions
+│   ├── creatures.json           # Your creature roster
+│   ├── creature_levels.json     # Current level per creature (gitignored)
+│   ├── expeditions.json         # All 20 expeditions
+│   └── expedition_progress.json # Unlocked tier count per expedition (gitignored)
 ├── models.py               # Dataclasses: Creature, Expedition, Assignment
 ├── calculator.py           # Score, time, XP/s computations
-├── objective.py            # Pluggable objective functions
 ├── solver.py               # Optimization algorithms
 ├── data_loader.py          # JSON I/O, validation
 └── main.py                 # CLI: run solver, print results
+```
 
 ## Solver Objectives & Constraints
 - Goal: level ALL creatures — every creature should be assigned to either a job or an expedition slot
