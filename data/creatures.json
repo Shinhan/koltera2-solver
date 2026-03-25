@@ -254,5 +254,29 @@
     "trait": "Hard Shell",
     "base_stats": { "POW": 14, "GRT": 28, "AGI": 4, "SMT": 5, "LOT": 8, "LCK": 3 },
     "job_proficiencies": { "Chopping": null, "Mining": 3, "Exploring": null, "Digging": 1, "Fishing": null, "Farming": null }
+  },
+  {
+    "name": "Wiggle",
+    "tier": 2,
+    "type": "wind",
+    "trait": "Scouting",
+    "base_stats": { "POW": 4, "GRT": 6, "AGI": 5, "SMT": 12, "LOT": 26, "LCK": 10 },
+    "job_proficiencies": { "Chopping": null, "Mining": 2, "Exploring": null, "Digging": null, "Fishing": null, "Farming": 3 }
+  },
+  {
+    "name": "Nibsy",
+    "tier": 2,
+    "type": "earth",
+    "trait": "Cold Resist",
+    "base_stats": { "POW": 26, "GRT": 14, "AGI": 5, "SMT": 4, "LOT": 8, "LCK": 3 },
+    "job_proficiencies": { "Chopping": null, "Mining": 2, "Exploring": null, "Digging": 3, "Fishing": null, "Farming": null }
+  },
+  {
+    "name": "Squish",
+    "tier": 2,
+    "type": "water",
+    "trait": "Water Breathing",
+    "base_stats": { "POW": 4, "GRT": 5, "AGI": 5, "SMT": 10, "LOT": 14, "LCK": 26 },
+    "job_proficiencies": { "Chopping": null, "Mining": null, "Exploring": null, "Digging": null, "Fishing": 3, "Farming": 2 }
   }
 ]

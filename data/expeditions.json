@@ -108,7 +108,7 @@
       { "difficulty": 1800, "xp_reward": 840 },
       { "difficulty": 2400, "xp_reward": 979 },
       { "difficulty": 3000, "xp_reward": 1120 },
-      { "difficulty": null, "xp_reward": null }
+      { "difficulty": 3600, "xp_reward": 1260 }
     ]
   },
   {
@@ -136,7 +136,7 @@
       { "difficulty": 2700, "xp_reward": 960 },
       { "difficulty": 3600, "xp_reward": 1120 },
       { "difficulty": 4500, "xp_reward": 1280 },
-      { "difficulty": null, "xp_reward": null }
+      { "difficulty": 5400, "xp_reward": 1440 }
     ]
   },
   {
@@ -163,7 +163,7 @@
       { "difficulty": 2300, "xp_reward": 850 },
       { "difficulty": 3450, "xp_reward": 1020 },
       { "difficulty": 4600, "xp_reward": 1190 },
-      { "difficulty": null, "xp_reward": null },
+      { "difficulty": 5750, "xp_reward": 1360 },
       { "difficulty": null, "xp_reward": null }
     ]
   },
@@ -177,7 +177,7 @@
       { "difficulty": 2500, "xp_reward": 900 },
       { "difficulty": 3750, "xp_reward": 1080 },
       { "difficulty": 5000, "xp_reward": 1260 },
-      { "difficulty": null, "xp_reward": null },
+      { "difficulty": 6250, "xp_reward": 1440 },
       { "difficulty": null, "xp_reward": null }
     ]
   },
@@ -205,7 +205,7 @@
       { "difficulty": 3800, "xp_reward": 1050 },
       { "difficulty": 5700, "xp_reward": 1260 },
       { "difficulty": 7600, "xp_reward": 1470 },
-      { "difficulty": null, "xp_reward": null },
+      { "difficulty": 9500, "xp_reward": 1680 },
       { "difficulty": null, "xp_reward": null }
     ]
   },
@@ -217,7 +217,7 @@
     "stat_weights": { "POW": 0.0, "GRT": 0.0, "AGI": 0.0, "SMT": 0.30, "LOT": 0.10, "LCK": 0.60 },
     "tiers": [
       { "difficulty": 4200, "xp_reward": 1100 },
-      { "difficulty": null, "xp_reward": null },
+      { "difficulty": 6300, "xp_reward": 1320 },
       { "difficulty": null, "xp_reward": null },
       { "difficulty": null, "xp_reward": null },
       { "difficulty": null, "xp_reward": null }
@@ -233,7 +233,7 @@
       { "difficulty": 4600, "xp_reward": 1150 },
       { "difficulty": 6900, "xp_reward": 1380 },
       { "difficulty": 9200, "xp_reward": 1610 },
-      { "difficulty": null, "xp_reward": null },
+      { "difficulty": 11500, "xp_reward": 1840 },
       { "difficulty": null, "xp_reward": null }
     ]
   },
