@@ -15,6 +15,7 @@ class Creature:
     type: str
     trait: str
     level: int
+    awakening: int
     base_stats: dict[str, int]
     job_proficiencies: dict[str, Optional[int]]
 
@@ -66,7 +67,8 @@ class ExpeditionAssignment:
 
 @dataclass
 class SolverResult:
-    """Complete solver output: job assignments, expedition assignments, and leftovers."""
+    """Complete solver output: sanctuary, job assignments, expedition assignments, and leftovers."""
+    sanctuary: list[Creature]
     job_assignments: list[JobAssignment]
     expedition_assignments: list[ExpeditionAssignment]
     unassigned: list[Creature]

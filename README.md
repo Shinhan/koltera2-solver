@@ -4,13 +4,14 @@ Optimally assigns creatures to expeditions and jobs in Koltera 2, maximising XP/
 
 ## What it does
 
+- Assigns awakened creatures (up to 8) to the Sanctuary, prioritising highest tier
 - Assigns one creature per job (Chopping, Mining, Exploring, Digging, Fishing, Farming) based on proficiency
 - Assigns remaining creatures to expeditions in parties of up to 3, picking the best tier and party composition per expedition
 - Maximises XP per second, accounting for type bonuses, trait bonuses, stat weights, and party score
 
 ## Setup
 
-1. Copy `data/creature_levels.json.example` to `data/creature_levels.json` and set each creature's current level
+1. Copy `data/creature_levels.json.example` to `data/creature_levels.json` and set each creature's current level and awakening (0 or 1)
 2. Copy `data/expedition_progress.json.example` to `data/expedition_progress.json` and set how many tiers you have unlocked per expedition (0 = not unlocked)
 
 > `creature_levels.json` and `expedition_progress.json` are personal save data and are gitignored.
@@ -29,7 +30,7 @@ Output shows job assignments, then each expedition with its party, score, time, 
 |------|-----------------|------------|
 | `data/creatures.json` | Creature roster: stats, types, traits, job proficiencies | No |
 | `data/expeditions.json` | All known expeditions: types, traits, weights, tier difficulties/rewards | No |
-| `data/creature_levels.json` | Your creatures' current levels | Yes |
+| `data/creature_levels.json` | Your creatures' current levels and awakening status | Yes |
 | `data/expedition_progress.json` | How many tiers you have unlocked per expedition (0–5) | Yes |
 
 ## Contributing expedition data

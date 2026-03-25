@@ -21,11 +21,13 @@ def load_creatures(
             tier=c["tier"],
             type=c["type"],
             trait=c["trait"],
-            level=levels[c["name"]],
+            level=levels[c["name"]]["level"],
+            awakening=levels[c["name"]]["awakening"],
             base_stats=c["base_stats"],
             job_proficiencies=c["job_proficiencies"],
         )
         for c in raw
+        if c["name"] in levels
     ]
 
 

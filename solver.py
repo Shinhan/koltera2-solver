@@ -1,9 +1,51 @@
 """Job and expedition assignment solver."""
 from itertools import combinations
+from statistics import pstdev
 from models import (
     Creature, Expedition, ExpeditionTier, JobAssignment, ExpeditionAssignment, SolverResult, JOBS
 )
 from calculator import xp_per_second, party_score, completion_time
+
+
+def assign_sanctuary(creatures: list[Creature]) -> list[Creature]:
+    """
+    Select up to 8 awakened creatures for the Sanctuary.
+    Priority: highest tier first. When a tier must be split to fill the last slots,
+    choose the subset that minimises std dev of summed job proficiencies across the party.
+    """
+    MAX_SANCTUARY = 8
+    awakened = [c for c in creatures if c.awakening > 0]
+    if len(awakened) <= MAX_SANCTUARY:
+        return awakened
+
+    from collections import defaultdict
+    by_tier: dict[int, list[Creature]] = defaultdict(list)
+    for c in awakened:
+        by_tier[c.tier].append(c)
+
+    selected: list[Creature] = []
+    for tier in sorted(by_tier.keys(), reverse=True):
+        group = by_tier[tier]
+        slots_left = MAX_SANCTUARY - len(selected)
+        if len(group) <= slots_left:
+            selected.extend(group)
+        else:
+            # Choose `slots_left` from `group` to minimise std dev of job proficiency sums
+            best_combo: tuple[Creature, ...] = ()
+            best_std = float("inf")
+            for combo in combinations(group, slots_left):
+                party = selected + list(combo)
+                job_sums = [sum(c.proficiency(job) for c in party) for job in JOBS]
+                std = pstdev(job_sums)
+                if std < best_std:
+                    best_std = std
+                    best_combo = combo
+            selected.extend(best_combo)
+            break
+        if len(selected) == MAX_SANCTUARY:
+            break
+
+    return selected
 
 
 def assign_jobs(creatures: list[Creature]) -> list[JobAssignment]:
@@ -87,17 +129,23 @@ def solve_expeditions(
 
 
 def solve(creatures: list[Creature], expeditions: list[Expedition]) -> SolverResult:
-    """Run job assignment then expedition assignment and return the full result."""
-    job_assignments = assign_jobs(creatures)
+    """Run sanctuary assignment, then job assignment, then expedition assignment."""
+    sanctuary = assign_sanctuary(creatures)
+    sanctuary_names = {c.name for c in sanctuary}
+
+    remaining = [c for c in creatures if c.name not in sanctuary_names]
+
+    job_assignments = assign_jobs(remaining)
     job_pool = {ja.creature.name for ja in job_assignments}
 
-    expedition_pool = [c for c in creatures if c.name not in job_pool]
+    expedition_pool = [c for c in remaining if c.name not in job_pool]
     expedition_assignments = solve_expeditions(expedition_pool, expeditions)
 
     assigned_to_exp = {c.name for ea in expedition_assignments for c in ea.party}
     unassigned = [c for c in expedition_pool if c.name not in assigned_to_exp]
 
     return SolverResult(
+        sanctuary=sanctuary,
         job_assignments=job_assignments,
         expedition_assignments=expedition_assignments,
         unassigned=unassigned,

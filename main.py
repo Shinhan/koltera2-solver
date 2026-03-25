@@ -10,6 +10,15 @@ def main():
     result = solve(creatures, expeditions)
 
     print("=" * 52)
+    print("SANCTUARY")
+    print("=" * 52)
+    job_sums = {job: sum(c.proficiency(job) for c in result.sanctuary) for job in ["Chopping", "Mining", "Exploring", "Digging", "Fishing", "Farming"]}
+    for c in result.sanctuary:
+        print(f"  {c.name:<10} T{c.tier}  Lv{c.level:<3} (awakening {c.awakening})")
+    print(f"  Job proficiency totals: " + "  ".join(f"{j[:3]}:{v}" for j, v in job_sums.items()))
+
+    print()
+    print("=" * 52)
     print("JOB ASSIGNMENTS")
     print("=" * 52)
     for ja in result.job_assignments:
