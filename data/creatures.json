@@ -294,5 +294,13 @@
     "trait": "Night Vision",
     "base_stats": { "POW": 5, "GRT": 4, "AGI": 28, "SMT": 12, "LOT": 8, "LCK": 3 },
     "job_proficiencies": { "Chopping": null, "Mining": null, "Exploring": 3, "Digging": null, "Fishing": 1, "Farming": null }
+  },
+  {
+    "name": "Zibby",
+    "tier": 2,
+    "type": "wind",
+    "trait": "Camouflage",
+    "base_stats": { "POW": 10, "GRT": 5, "AGI": 5, "SMT": 14, "LOT": 26, "LCK": 3 },
+    "job_proficiencies": { "Chopping": null, "Mining": 3, "Exploring": 2, "Digging": null, "Fishing": null, "Farming": null }
   }
 ]

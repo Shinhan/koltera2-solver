@@ -234,7 +234,7 @@
       { "difficulty": 6900, "xp_reward": 1380 },
       { "difficulty": 9200, "xp_reward": 1610 },
       { "difficulty": 11500, "xp_reward": 1840 },
-      { "difficulty": null, "xp_reward": null }
+      { "difficulty": 13800, "xp_reward": 2070 }
     ]
   },
   {

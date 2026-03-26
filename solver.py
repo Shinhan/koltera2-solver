@@ -103,7 +103,7 @@ def solve_expeditions(
       available (expedition, party, tier) that includes them. This ensures low-level
       creatures aren't crowded out of high-XP/s runs by high-stat creatures.
     """
-    available: list[Creature] = sorted(pool, key=lambda c: c.level)
+    available: list[Creature] = sorted(pool, key=lambda c: (c.awakening, c.level))
     avail_exps: list[Expedition] = list(expeditions)
     assignments: list[ExpeditionAssignment] = []
 

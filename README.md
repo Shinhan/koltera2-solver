@@ -6,7 +6,7 @@ Optimally assigns creatures to expeditions and jobs in Koltera 2, maximising XP/
 
 - Assigns awakened creatures (up to 8) to the Sanctuary, prioritising highest tier
 - Assigns one creature per job (Chopping, Mining, Exploring, Digging, Fishing, Farming) based on proficiency
-- Assigns remaining creatures to expeditions in parties of up to 3, picking the best tier and party composition per expedition
+- Assigns remaining creatures to expeditions in parties of up to 3, picking the best tier and party composition per expedition — non-awakened creatures take priority over awakened ones
 - Maximises XP per second, accounting for type bonuses, trait bonuses, stat weights, and party score
 
 ## Setup

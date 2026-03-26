@@ -36,6 +36,10 @@
 - For each job: pick creature with highest proficiency (0–10); tiebreak = highest level
 - Job-assigned creatures are removed from the expedition pool before solving
 
+**Expedition solver priority:**
+- Process creatures in order: non-awakened first, then awakened; within each group, lowest level first
+- Ensures non-awakened creatures (who can't go to Sanctuary) are never crowded out by awakened ones
+
 **Expedition tiers:**
 - `xp_reward: null` in a tier means that difficulty is not yet unlocked — skip in solver
 - Party size is 1–3 creatures; smaller parties are valid when fewer creatures remain
