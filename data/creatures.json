@@ -302,5 +302,13 @@
     "trait": "Camouflage",
     "base_stats": { "POW": 10, "GRT": 5, "AGI": 5, "SMT": 14, "LOT": 26, "LCK": 3 },
     "job_proficiencies": { "Chopping": null, "Mining": 3, "Exploring": 2, "Digging": null, "Fishing": null, "Farming": null }
+  },
+  {
+    "name": "Belle",
+    "tier": 2,
+    "type": "water",
+    "trait": "Regeneration",
+    "base_stats": { "POW": 4, "GRT": 7, "AGI": 6, "SMT": 15, "LOT": 28, "LCK": 3 },
+    "job_proficiencies": { "Chopping": null, "Mining": null, "Exploring": 1, "Digging": null, "Fishing": null, "Farming": 3 }
   }
 ]

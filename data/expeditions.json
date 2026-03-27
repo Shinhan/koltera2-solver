@@ -150,7 +150,7 @@
       { "difficulty": 4950, "xp_reward": 1200 },
       { "difficulty": 6600, "xp_reward": 1400 },
       { "difficulty": 8250, "xp_reward": 1600 },
-      { "difficulty": null, "xp_reward": null }
+      { "difficulty": 9900, "xp_reward": 1800 }
     ]
   },
   {
@@ -178,7 +178,7 @@
       { "difficulty": 3750, "xp_reward": 1080 },
       { "difficulty": 5000, "xp_reward": 1260 },
       { "difficulty": 6250, "xp_reward": 1440 },
-      { "difficulty": null, "xp_reward": null }
+      { "difficulty": 7500, "xp_reward": 1620 }
     ]
   },
   {
@@ -206,7 +206,7 @@
       { "difficulty": 5700, "xp_reward": 1260 },
       { "difficulty": 7600, "xp_reward": 1470 },
       { "difficulty": 9500, "xp_reward": 1680 },
-      { "difficulty": null, "xp_reward": null }
+      { "difficulty": 11400, "xp_reward": 1890 }
     ]
   },
   {
@@ -218,7 +218,7 @@
     "tiers": [
       { "difficulty": 4200, "xp_reward": 1100 },
       { "difficulty": 6300, "xp_reward": 1320 },
-      { "difficulty": null, "xp_reward": null },
+      { "difficulty": 8400, "xp_reward": 1540 },
       { "difficulty": null, "xp_reward": null },
       { "difficulty": null, "xp_reward": null }
     ]
@@ -248,7 +248,7 @@
       { "difficulty": 7500, "xp_reward": 1440 },
       { "difficulty": 10000, "xp_reward": 1680 },
       { "difficulty": 12500, "xp_reward": 1920 },
-      { "difficulty": null, "xp_reward": null }
+      { "difficulty": 15000, "xp_reward": 2160 }
     ]
   },
   {
@@ -262,7 +262,7 @@
       { "difficulty": 8250, "xp_reward": 1500 },
       { "difficulty": 11000, "xp_reward": 1750 },
       { "difficulty": 13750, "xp_reward": 2000 },
-      { "difficulty": null, "xp_reward": null }
+      { "difficulty": 16500, "xp_reward": 2250 }
     ]
   },
   {

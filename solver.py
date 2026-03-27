@@ -1,4 +1,5 @@
 """Job and expedition assignment solver."""
+from collections import defaultdict
 from itertools import combinations
 from statistics import pstdev
 from models import (
@@ -7,18 +8,34 @@ from models import (
 from calculator import xp_per_second, party_score, completion_time
 
 
+_max_sanctuary = 8
+
+
+def _best_combo_by_proficiency(
+    group: list[Creature], selected: list[Creature], slots: int
+) -> tuple[Creature, ...]:
+    """Return the combo of `slots` creatures from `group` minimising job proficiency std dev."""
+    best: tuple[Creature, ...] = ()
+    best_std = float("inf")
+    for combo in combinations(group, slots):
+        job_sums = [sum(c.proficiency(j) for c in selected + list(combo)) for j in JOBS]
+        std = pstdev(job_sums)
+        if std < best_std:
+            best_std = std
+            best = combo
+    return best
+
+
 def assign_sanctuary(creatures: list[Creature]) -> list[Creature]:
     """
     Select up to 8 awakened creatures for the Sanctuary.
     Priority: highest tier first. When a tier must be split to fill the last slots,
     choose the subset that minimises std dev of summed job proficiencies across the party.
     """
-    MAX_SANCTUARY = 8
     awakened = [c for c in creatures if c.awakening > 0]
-    if len(awakened) <= MAX_SANCTUARY:
+    if len(awakened) <= _max_sanctuary:
         return awakened
 
-    from collections import defaultdict
     by_tier: dict[int, list[Creature]] = defaultdict(list)
     for c in awakened:
         by_tier[c.tier].append(c)
@@ -26,23 +43,13 @@ def assign_sanctuary(creatures: list[Creature]) -> list[Creature]:
     selected: list[Creature] = []
     for tier in sorted(by_tier.keys(), reverse=True):
         group = by_tier[tier]
-        slots_left = MAX_SANCTUARY - len(selected)
+        slots_left = _max_sanctuary - len(selected)
         if len(group) <= slots_left:
             selected.extend(group)
         else:
-            # Choose `slots_left` from `group` to minimise std dev of job proficiency sums
-            best_combo: tuple[Creature, ...] = ()
-            best_std = float("inf")
-            for combo in combinations(group, slots_left):
-                party = selected + list(combo)
-                job_sums = [sum(c.proficiency(job) for c in party) for job in JOBS]
-                std = pstdev(job_sums)
-                if std < best_std:
-                    best_std = std
-                    best_combo = combo
-            selected.extend(best_combo)
+            selected.extend(_best_combo_by_proficiency(group, selected, slots_left))
             break
-        if len(selected) == MAX_SANCTUARY:
+        if len(selected) == _max_sanctuary:
             break
 
     return selected
@@ -57,7 +64,7 @@ def assign_jobs(creatures: list[Creature]) -> list[JobAssignment]:
     assigned: set[str] = set()
     for job in JOBS:
         candidates = [c for c in creatures if c.name not in assigned]
-        chosen = max(candidates, key=lambda c, j=job: (c.proficiency(j), c.level))
+        chosen = max(candidates, key=lambda c, j=job: (c.proficiency(j), c.awakening, c.level))
         assignments.append(JobAssignment(job=job, creature=chosen))
         assigned.add(chosen.name)
     return assignments

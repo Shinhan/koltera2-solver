@@ -33,7 +33,7 @@
 **Job assignment (pre-solve step):**
 - 6 jobs: Chopping, Mining, Exploring, Digging, Fishing, Farming
 - Exactly 1 creature assigned per job; a creature can only hold 1 job
-- For each job: pick creature with highest proficiency (0–10); tiebreak = highest level
+- For each job: pick creature with highest proficiency (0–10); tiebreak = highest awakening, then highest level
 - Job-assigned creatures are removed from the expedition pool before solving
 
 **Expedition solver priority:**
