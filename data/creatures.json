@@ -310,5 +310,29 @@
     "trait": "Regeneration",
     "base_stats": { "POW": 4, "GRT": 7, "AGI": 6, "SMT": 15, "LOT": 28, "LCK": 3 },
     "job_proficiencies": { "Chopping": null, "Mining": null, "Exploring": 1, "Digging": null, "Fishing": null, "Farming": 3 }
+  },
+  {
+    "name": "Flaire",
+    "tier": 3,
+    "type": "fire",
+    "trait": "Heat Resist",
+    "base_stats": { "POW": 34, "GRT": 8, "AGI": 36, "SMT": 5, "LOT": 12, "LCK": 4 },
+    "job_proficiencies": { "Chopping": 1, "Mining": 5, "Exploring": 4, "Digging": null, "Fishing": null, "Farming": null }
+  },
+  {
+    "name": "Koral",
+    "tier": 3,
+    "type": "water",
+    "trait": "Water Breathing",
+    "base_stats": { "POW": 10, "GRT": 38, "AGI": 5, "SMT": 6, "LOT": 34, "LCK": 4 },
+    "job_proficiencies": { "Chopping": null, "Mining": 5, "Exploring": null, "Digging": 2, "Fishing": 3, "Farming": null }
+  },
+  {
+    "name": "Honey",
+    "tier": 3,
+    "type": "wind",
+    "trait": "Tracking",
+    "base_stats": { "POW": 34, "GRT": 6, "AGI": 8, "SMT": 10, "LOT": 36, "LCK": 4 },
+    "job_proficiencies": { "Chopping": 5, "Mining": null, "Exploring": 2, "Digging": null, "Fishing": null, "Farming": 3 }
   }
 ]
