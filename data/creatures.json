@@ -310,5 +310,13 @@
     "trait": "Regeneration",
     "base_stats": { "POW": 4, "GRT": 7, "AGI": 6, "SMT": 15, "LOT": 28, "LCK": 3 },
     "job_proficiencies": { "Chopping": null, "Mining": null, "Exploring": 1, "Digging": null, "Fishing": null, "Farming": 3 }
+  },
+  {
+    "name": "Tuskers",
+    "tier": 2,
+    "type": "water",
+    "trait": "Regeneration",
+    "base_stats": { "POW": 26, "GRT": 12, "AGI": 4, "SMT": 4, "LOT": 14, "LCK": 5 },
+    "job_proficiencies": { "Chopping": 2, "Mining": null, "Exploring": null, "Digging": null, "Fishing": 3, "Farming": null }
   }
 ]

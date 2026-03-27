@@ -164,7 +164,7 @@
       { "difficulty": 3450, "xp_reward": 1020 },
       { "difficulty": 4600, "xp_reward": 1190 },
       { "difficulty": 5750, "xp_reward": 1360 },
-      { "difficulty": null, "xp_reward": null }
+      { "difficulty": 6900, "xp_reward": 1530 }
     ]
   },
   {
@@ -189,7 +189,7 @@
     "stat_weights": { "POW": 0.0, "GRT": 0.50, "AGI": 0.40, "SMT": 0.0, "LOT": 0.0, "LCK": 0.10 },
     "tiers": [
       { "difficulty": 2900, "xp_reward": 950 },
-      { "difficulty": null, "xp_reward": null },
+      { "difficulty": 4350, "xp_reward": 1140 },
       { "difficulty": null, "xp_reward": null },
       { "difficulty": null, "xp_reward": null },
       { "difficulty": null, "xp_reward": null }
@@ -273,7 +273,7 @@
     "stat_weights": { "POW": 0.70, "GRT": 0.20, "AGI": 0.10, "SMT": 0.0, "LOT": 0.0, "LCK": 0.0 },
     "tiers": [
       { "difficulty": 6000, "xp_reward": 1300 },
-      { "difficulty": null, "xp_reward": null },
+      { "difficulty": 9000, "xp_reward": 1560 },
       { "difficulty": null, "xp_reward": null },
       { "difficulty": null, "xp_reward": null },
       { "difficulty": null, "xp_reward": null }
