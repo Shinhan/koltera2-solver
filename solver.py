@@ -112,6 +112,7 @@ def solve_expeditions(
     """
     available: list[Creature] = sorted(pool, key=lambda c: (c.awakening, c.level))
     avail_exps: list[Expedition] = list(expeditions)
+    exp_order: dict[str, int] = {exp.name: i for i, exp in enumerate(expeditions)}
     assignments: list[ExpeditionAssignment] = []
 
     while available and avail_exps:
@@ -132,7 +133,7 @@ def solve_expeditions(
             available.remove(c)
         avail_exps.remove(exp)
 
-    return assignments
+    return sorted(assignments, key=lambda ea: exp_order.get(ea.expedition.name, float('inf')))
 
 
 def solve(creatures: list[Creature], expeditions: list[Expedition]) -> SolverResult:
