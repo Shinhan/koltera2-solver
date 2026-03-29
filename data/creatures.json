@@ -334,5 +334,13 @@
     "trait": "Tracking",
     "base_stats": { "POW": 34, "GRT": 6, "AGI": 8, "SMT": 10, "LOT": 36, "LCK": 4 },
     "job_proficiencies": { "Chopping": 5, "Mining": null, "Exploring": 2, "Digging": null, "Fishing": null, "Farming": 3 }
+  },
+  {
+    "name": "Bubbles",
+    "tier": 3,
+    "type": "water",
+    "trait": "Water Breathing",
+    "base_stats": { "POW": 4, "GRT": 5, "AGI": 12, "SMT": 8, "LOT": 38, "LCK": 34 },
+    "job_proficiencies": { "Chopping": null, "Mining": null, "Exploring": 1, "Digging": null, "Fishing": 5, "Farming": 4 }
   }
 ]
