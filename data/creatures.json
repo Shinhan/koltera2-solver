@@ -358,5 +358,21 @@
     "trait": "Heat Resist",
     "base_stats": { "POW": 12, "GRT": 8, "AGI": 5, "SMT": 34, "LOT": 36, "LCK": 4 },
     "job_proficiencies": { "Chopping": null, "Mining": 4, "Exploring": null, "Digging": 5, "Fishing":null, "Farming": 1 }
+  },
+  {
+    "name": "Rustle",
+    "tier": 3,
+    "type": "earth",
+    "trait": "Learner",
+    "base_stats": { "POW": 5, "GRT": 6, "AGI": 36, "SMT": 34, "LOT": 12, "LCK": 4 },
+    "job_proficiencies": { "Chopping": 2, "Mining": null, "Exploring": 5, "Digging": null, "Fishing":null, "Farming": 3 }
+  },
+  {
+    "name": "Corala",
+    "tier": 3,
+    "type": "water",
+    "trait": "Cold Resist",
+    "base_stats": { "POW": 4, "GRT": 36, "AGI": 6, "SMT": 8, "LOT": 34, "LCK": 14 },
+    "job_proficiencies": { "Chopping": null, "Mining": 2, "Exploring": null, "Digging": 3, "Fishing":5, "Farming": null }
   }
 ]
