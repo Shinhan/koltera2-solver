@@ -192,7 +192,7 @@
       { "difficulty": 4350, "xp_reward": 1140 },
       { "difficulty": 5800, "xp_reward": 1330 },
       { "difficulty": 7250, "xp_reward": 1520 },
-      { "difficulty": null, "xp_reward": null }
+      { "difficulty": 8700, "xp_reward": 1710 }
     ]
   },
   {
@@ -276,7 +276,7 @@
       { "difficulty": 9000, "xp_reward": 1560 },
       { "difficulty": 12000, "xp_reward": 1819 },
       { "difficulty": 15000, "xp_reward": 2000 },
-      { "difficulty": null, "xp_reward": null }
+      { "difficulty": 18000, "xp_reward": 2340 }
     ]
   }
 ]
