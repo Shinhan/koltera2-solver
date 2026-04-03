@@ -82,17 +82,21 @@ def _find_best_for_creature(
     creature: Creature,
     others: list[Creature],
     avail_exps: list[Expedition],
+    min_party_size: int = 1,
 ) -> tuple[Expedition, ExpeditionTier, list[Creature], float] | None:
     """Return (expedition, tier, party, xps) maximising XP/s with creature in the party."""
     best_xps = -1.0
     best: tuple[Expedition, ExpeditionTier, list[Creature], float] | None = None
+    # extra = number of companions; party size = 1 + extra (max 3)
+    min_extra = max(0, min_party_size - 1)
     for exp in avail_exps:
-        for extra in range(3):  # 0 companions, 1 companion, 2 companions
-            party_options = (
-                [[creature]]
-                if extra == 0
-                else [[creature] + list(comp) for comp in combinations(others, extra)]
-            )
+        for extra in range(min_extra, 3):  # companions: 0, 1, or 2
+            if extra == 0:
+                party_options = [[creature]]
+            else:
+                if len(others) < extra:
+                    continue
+                party_options = [[creature] + list(comp) for comp in combinations(others, extra)]
             for party in party_options:
                 tier, xps = _best_tier(party, exp)
                 if xps > best_xps:
@@ -102,7 +106,7 @@ def _find_best_for_creature(
 
 
 def solve_expeditions(
-    pool: list[Creature], expeditions: list[Expedition]
+    pool: list[Creature], expeditions: list[Expedition], min_party_size: int = 1,
 ) -> list[ExpeditionAssignment]:
     """
     Level-priority greedy solver:
@@ -116,7 +120,7 @@ def solve_expeditions(
 
     while available and avail_exps:
         creature = available[0]
-        best = _find_best_for_creature(creature, available[1:], avail_exps)
+        best = _find_best_for_creature(creature, available[1:], avail_exps, min_party_size)
         if best is None:
             break
         exp, tier, party, best_xps = best
@@ -135,7 +139,9 @@ def solve_expeditions(
     return assignments
 
 
-def solve(creatures: list[Creature], expeditions: list[Expedition]) -> SolverResult:
+def solve(
+    creatures: list[Creature], expeditions: list[Expedition], min_party_size: int = 1,
+) -> SolverResult:
     """Run sanctuary assignment, then job assignment, then expedition assignment."""
     sanctuary = assign_sanctuary(creatures)
     sanctuary_names = {c.name for c in sanctuary}
@@ -146,7 +152,7 @@ def solve(creatures: list[Creature], expeditions: list[Expedition]) -> SolverRes
     job_pool = {ja.creature.name for ja in job_assignments}
 
     expedition_pool = [c for c in remaining if c.name not in job_pool]
-    expedition_assignments = solve_expeditions(expedition_pool, expeditions)
+    expedition_assignments = solve_expeditions(expedition_pool, expeditions, min_party_size)
 
     assigned_to_exp = {c.name for ea in expedition_assignments for c in ea.party}
     unassigned = [c for c in expedition_pool if c.name not in assigned_to_exp]

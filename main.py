@@ -1,13 +1,22 @@
 """CLI entry point: run the solver and print results."""
+import argparse
 from data_loader import load_creatures, load_expeditions
 from solver import solve
 
 
 def main():
     """Load data, run solver, and print job/expedition/unassigned results."""
+    parser = argparse.ArgumentParser(description="Koltera expedition solver")
+    parser.add_argument(
+        "--min-party-size", type=int, default=1, choices=[1, 2, 3],
+        metavar="{1,2,3}",
+        help="Minimum creatures per expedition party (default: 1)",
+    )
+    args = parser.parse_args()
+
     creatures = load_creatures()
     expeditions = load_expeditions()
-    result = solve(creatures, expeditions)
+    result = solve(creatures, expeditions, min_party_size=args.min_party_size)
 
     print("=" * 52)
     print("SANCTUARY")
