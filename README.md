@@ -4,9 +4,10 @@ Optimally assigns creatures to expeditions and jobs in Koltera 2, maximising XP/
 
 ## What it does
 
-- Assigns awakened creatures (up to 8) to the Sanctuary, prioritising highest tier
-- Assigns one creature per job (Chopping, Mining, Exploring, Digging, Fishing, Farming) based on proficiency
-- Assigns remaining creatures to expeditions in parties of up to 3, picking the best tier and party composition per expedition — non-awakened creatures take priority over awakened ones
+1. **Jobs** — assigns one creature per job (Chopping, Mining, Exploring, Digging, Fishing, Farming) based on proficiency
+2. **Sanctuary** — assigns awakened creatures (up to 8) from the remaining pool, prioritising highest tier
+3. **Machines** *(optional, `--machine`)* — assigns awakened creatures to 9 machines: Bakery (water), Sawmill (wind), Greenhouse (earth), Smelter (fire), Cooker (fire), and Stone Quarry, Stick Finder, Coal Miner, Refinery (any element)
+4. **Expeditions** — assigns remaining creatures to expeditions in parties of up to 3, picking the best tier and party composition — non-awakened creatures take priority over awakened ones
 - Maximises XP per second, accounting for type bonuses, trait bonuses, stat weights, and party score
 
 ## Setup
@@ -19,10 +20,15 @@ Optimally assigns creatures to expeditions and jobs in Koltera 2, maximising XP/
 ## Usage
 
 ```
-python main.py
+python main.py [--machine] [--min-party-size {1,2,3}]
 ```
 
-Output shows job assignments, then each expedition with its party, score, time, and XP/s.
+| Flag | Description |
+|------|-------------|
+| `--machine` | Assign awakened creatures to machines after jobs, before expeditions |
+| `--min-party-size N` | Minimum creatures per expedition party (default: 1) |
+
+Output shows Sanctuary, Job assignments, Machine assignments (if `--machine`), Expedition assignments, and any unassigned creatures.
 
 ## Data files
 

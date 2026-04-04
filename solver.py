@@ -3,12 +3,13 @@ from collections import defaultdict
 from itertools import combinations
 from statistics import pstdev
 from models import (
-    Creature, Expedition, ExpeditionTier, JobAssignment, ExpeditionAssignment, SolverResult, JOBS
+    Creature, Expedition, ExpeditionTier, JobAssignment, MachineAssignment,
+    ExpeditionAssignment, SolverResult, JOBS
 )
 from calculator import xp_per_second, party_score, completion_time
 
 
-_max_sanctuary = 8
+_MAX_SANCTUARY = 8
 
 
 def _best_combo_by_proficiency(
@@ -33,7 +34,7 @@ def assign_sanctuary(creatures: list[Creature]) -> list[Creature]:
     choose the subset that minimises std dev of summed job proficiencies across the party.
     """
     awakened = [c for c in creatures if c.awakening > 0]
-    if len(awakened) <= _max_sanctuary:
+    if len(awakened) <= _MAX_SANCTUARY:
         return awakened
 
     by_tier: dict[int, list[Creature]] = defaultdict(list)
@@ -43,16 +44,57 @@ def assign_sanctuary(creatures: list[Creature]) -> list[Creature]:
     selected: list[Creature] = []
     for tier in sorted(by_tier.keys(), reverse=True):
         group = by_tier[tier]
-        slots_left = _max_sanctuary - len(selected)
+        slots_left = _MAX_SANCTUARY - len(selected)
         if len(group) <= slots_left:
             selected.extend(group)
         else:
             selected.extend(_best_combo_by_proficiency(group, selected, slots_left))
             break
-        if len(selected) == _max_sanctuary:
+        if len(selected) == _MAX_SANCTUARY:
             break
 
     return selected
+
+
+_MACHINES: list[tuple[str, str | None]] = [
+    ("Stone Quarry", None),
+    ("Stick Finder", None),
+    ("Coal Miner",   None),
+    ("Smelter",      "fire"),
+    ("Sawmill",      "wind"),
+    ("Cooker",       "fire"),
+    ("Greenhouse",   "earth"),
+    ("Bakery",       "water"),
+    ("Refinery",     None),
+]
+
+
+def assign_machines(creatures: list[Creature]) -> list[MachineAssignment]:
+    """
+    Assign awakened creatures to machines.
+    Type-specific slots (water/wind/earth/fire) are filled first, then any-type slots.
+    Within each pass: prefer highest awakening, then highest level.
+    Only awakened creatures are eligible.
+    """
+    awakened = [c for c in creatures if c.awakening > 0]
+    assigned: set[str] = set()
+    assignments: list[MachineAssignment] = []
+
+    def _key(c: Creature) -> tuple[int, int]:
+        return (c.awakening, c.level)
+
+    for machine_name, required_type in _MACHINES:
+        if required_type is not None:
+            candidates = [c for c in awakened if c.type == required_type and c.name not in assigned]
+        else:
+            candidates = [c for c in awakened if c.name not in assigned]
+        if not candidates:
+            continue
+        chosen = max(candidates, key=_key)
+        assignments.append(MachineAssignment(machine=machine_name, creature=chosen))
+        assigned.add(chosen.name)
+
+    return assignments
 
 
 def assign_jobs(creatures: list[Creature]) -> list[JobAssignment]:
@@ -139,27 +181,35 @@ def solve_expeditions(
     return assignments
 
 
+def _exclude(pool: list[Creature], names: set[str]) -> list[Creature]:
+    return [c for c in pool if c.name not in names]
+
+
 def solve(
-    creatures: list[Creature], expeditions: list[Expedition], min_party_size: int = 1,
+    creatures: list[Creature],
+    expeditions: list[Expedition],
+    min_party_size: int = 1,
+    use_machines: bool = False,
 ) -> SolverResult:
-    """Run sanctuary assignment, then job assignment, then expedition assignment."""
-    sanctuary = assign_sanctuary(creatures)
-    sanctuary_names = {c.name for c in sanctuary}
+    """Run job, sanctuary, optional machine, and expedition assignments."""
+    job_assignments = assign_jobs(creatures)
+    remaining = _exclude(creatures, {ja.creature.name for ja in job_assignments})
 
-    remaining = [c for c in creatures if c.name not in sanctuary_names]
+    sanctuary = assign_sanctuary(remaining)
+    remaining = _exclude(remaining, {c.name for c in sanctuary})
 
-    job_assignments = assign_jobs(remaining)
-    job_pool = {ja.creature.name for ja in job_assignments}
+    machine_assignments: list[MachineAssignment] = []
+    if use_machines:
+        machine_assignments = assign_machines(remaining)
+        remaining = _exclude(remaining, {ma.creature.name for ma in machine_assignments})
 
-    expedition_pool = [c for c in remaining if c.name not in job_pool]
-    expedition_assignments = solve_expeditions(expedition_pool, expeditions, min_party_size)
-
+    expedition_assignments = solve_expeditions(remaining, expeditions, min_party_size)
     assigned_to_exp = {c.name for ea in expedition_assignments for c in ea.party}
-    unassigned = [c for c in expedition_pool if c.name not in assigned_to_exp]
 
     return SolverResult(
         sanctuary=sanctuary,
+        machine_assignments=machine_assignments,
         job_assignments=job_assignments,
         expedition_assignments=expedition_assignments,
-        unassigned=unassigned,
+        unassigned=_exclude(remaining, assigned_to_exp),
     )

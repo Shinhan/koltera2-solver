@@ -49,6 +49,13 @@ class Expedition:
 
 
 @dataclass
+class MachineAssignment:
+    """A creature assigned to a machine slot."""
+    machine: str
+    creature: Creature
+
+
+@dataclass
 class JobAssignment:
     """A creature assigned to a job slot."""
     job: str
@@ -69,6 +76,7 @@ class ExpeditionAssignment:
 class SolverResult:
     """Complete solver output: sanctuary, job assignments, expedition assignments, and leftovers."""
     sanctuary: list[Creature]
+    machine_assignments: list[MachineAssignment]
     job_assignments: list[JobAssignment]
     expedition_assignments: list[ExpeditionAssignment]
     unassigned: list[Creature]

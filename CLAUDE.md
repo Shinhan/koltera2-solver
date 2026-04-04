@@ -24,17 +24,26 @@
 - Tracked in `creature_levels.json` as `"awakening": int` (0 = not awakened)
 - Moss (tier 0 in-game) is displayed as tier 0 but treated as tier 1 by the solver — leave as-is
 
-**Sanctuary (highest-priority assignment, pre-job step):**
-- Only awakened creatures are eligible
-- At most 8 creatures; selected by descending tier
-- If a tier must be split to fill the last slots, choose the subset minimising std dev of summed job proficiencies across the party
-- Sanctuary creatures are removed from the job/expedition pool before solving
-
-**Job assignment (pre-solve step):**
+**Job assignment (first step):**
 - 6 jobs: Chopping, Mining, Exploring, Digging, Fishing, Farming
 - Exactly 1 creature assigned per job; a creature can only hold 1 job
 - For each job: pick creature with highest proficiency (0–10); tiebreak = highest awakening, then highest level
-- Job-assigned creatures are removed from the expedition pool before solving
+- Job-assigned creatures are removed from all subsequent pools
+
+**Sanctuary (post-job step):**
+- Only awakened creatures are eligible
+- At most 8 creatures; selected by descending tier
+- If a tier must be split to fill the last slots, choose the subset minimising std dev of summed job proficiencies across the party
+- Sanctuary creatures are removed from the machine/expedition pool before solving
+
+**Machine assignment (optional, `--machine` flag, post-job step):**
+- 9 machines with fixed element requirements:
+  - Bakery (water), Sawmill (wind), Greenhouse (earth), Smelter (fire), Cooker (fire)
+  - Stone Quarry, Stick Finder, Coal Miner, Refinery (any element)
+- Only awakened creatures are eligible
+- Type-specific slots are filled first, then any-type slots
+- Tiebreak: highest awakening, then highest level
+- Machine-assigned creatures are removed from the expedition pool before solving
 
 **Expedition solver priority:**
 - Process creatures in order: non-awakened first, then awakened; within each group, lowest level first
@@ -58,7 +67,7 @@
 │   ├── creature_levels.json     # Current level + awakening per creature (gitignored)
 │   ├── expeditions.json         # All 20 expeditions
 │   └── expedition_progress.json # Unlocked tier count per expedition (gitignored)
-├── models.py               # Dataclasses: Creature, Expedition, Assignment
+├── models.py               # Dataclasses: Creature, Expedition, Assignment, MachineAssignment
 ├── calculator.py           # Score, time, XP/s computations
 ├── solver.py               # Optimization algorithms
 ├── data_loader.py          # JSON I/O, validation
@@ -66,6 +75,6 @@
 ```
 
 ## Solver Objectives & Constraints
-- Goal: level ALL creatures — every creature should be assigned to sanctuary, a job, or an expedition slot
-- Unassigned creatures are acceptable only if total slots (8 sanctuary + 6 jobs + expeditions×3) < creature count
+- Goal: level ALL creatures — every creature should be assigned to sanctuary, a job, a machine, or an expedition slot
+- Unassigned creatures are acceptable only if total slots (8 sanctuary + 6 jobs + 9 machines + expeditions×3) < creature count
 - xp_reward scales with difficulty (Water Delivery: xp = 270 + 1.8×difficulty); stored explicitly per tier in JSON

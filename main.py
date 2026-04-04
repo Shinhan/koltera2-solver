@@ -12,11 +12,15 @@ def main():
         metavar="{1,2,3}",
         help="Minimum creatures per expedition party (default: 1)",
     )
+    parser.add_argument(
+        "--machine", action="store_true",
+        help="Assign awakened creatures to machines before expeditions",
+    )
     args = parser.parse_args()
 
     creatures = load_creatures()
     expeditions = load_expeditions()
-    result = solve(creatures, expeditions, min_party_size=args.min_party_size)
+    result = solve(creatures, expeditions, min_party_size=args.min_party_size, use_machines=args.machine)
 
     print("=" * 52)
     print("SANCTUARY")
@@ -34,6 +38,15 @@ def main():
         c = ja.creature
         prof = c.proficiency(ja.job)
         print(f"  {ja.job:<12} -> {c.name:<10} Lv{c.level:<3} (proficiency {prof})")
+
+    if result.machine_assignments:
+        print()
+        print("=" * 52)
+        print("MACHINE ASSIGNMENTS")
+        print("=" * 52)
+        for ma in result.machine_assignments:
+            c = ma.creature
+            print(f"  {ma.machine:<14} -> {c.name:<10} T{c.tier}  Lv{c.level:<3} (awakening {c.awakening}  {c.type})")
 
     print()
     print("=" * 52)
