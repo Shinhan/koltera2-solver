@@ -422,5 +422,37 @@
     "trait": "Lucky",
     "base_stats": { "POW": 38, "GRT": 34, "AGI": 6, "SMT": 5, "LOT": 10, "LCK": 4 },
     "job_proficiencies": { "Chopping": 5, "Mining": null, "Exploring": null, "Digging": 2, "Fishing":null, "Farming":3 }
+  },
+  {
+    "name": "Ruby",
+    "tier": 3,
+    "type": "fire",
+    "trait": "Water Breathing",
+    "base_stats": { "POW": 4, "GRT": 5, "AGI": 10, "SMT": 8, "LOT": 34, "LCK": 38 },
+    "job_proficiencies": { "Chopping": null, "Mining": 4, "Exploring": 4, "Digging": null, "Fishing":5, "Farming":null }
+  },
+  {
+    "name": "Budbud",
+    "tier": 3,
+    "type": "earth",
+    "trait": "Poison Resist",
+    "base_stats": { "POW": 5, "GRT": 10, "AGI": 6, "SMT": 34, "LOT": 38, "LCK": 4 },
+    "job_proficiencies": { "Chopping": null, "Mining": null, "Exploring": 3, "Digging": null, "Fishing":3, "Farming":5 }
+  },
+  {
+    "name": "Peach",
+    "tier": 3,
+    "type": "wind",
+    "trait": "Cold Resist",
+    "base_stats": { "POW": 4, "GRT": 5, "AGI": 34, "SMT": 38, "LOT": 8, "LCK": 10 },
+    "job_proficiencies": { "Chopping": null, "Mining": null, "Exploring": 5, "Digging": null, "Fishing":1, "Farming":2 }
+  },
+  {
+    "name": "Strawberry",
+    "tier": 3,
+    "type": "fire",
+    "trait": "Regeneration",
+    "base_stats": { "POW": 6, "GRT": 12, "AGI": 5, "SMT": 34, "LOT": 36, "LCK": 4 },
+    "job_proficiencies": { "Chopping": null, "Mining": null, "Exploring": 3, "Digging": 5, "Fishing":null, "Farming":2 }
   }
 ]
