@@ -20,13 +20,14 @@ Optimally assigns creatures to expeditions and jobs in Koltera 2, maximising XP/
 ## Usage
 
 ```
-python main.py [--machine] [--min-party-size {1,2,3}]
+python main.py [--machine] [--min-party-size {1,2,3}] [--awakened-helpers]
 ```
 
 | Flag | Description |
 |------|-------------|
 | `--machine` | Assign awakened creatures to machines after jobs, before expeditions |
 | `--min-party-size N` | Minimum creatures per expedition party (default: 1) |
+| `--awakened-helpers` | Only awakened creatures may serve as party helpers (companions) in expeditions |
 
 Output shows Sanctuary, Job assignments, Machine assignments (if `--machine`), Expedition assignments, and any unassigned creatures.
 

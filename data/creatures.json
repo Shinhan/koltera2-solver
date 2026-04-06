@@ -454,5 +454,29 @@
     "trait": "Regeneration",
     "base_stats": { "POW": 6, "GRT": 12, "AGI": 5, "SMT": 34, "LOT": 36, "LCK": 4 },
     "job_proficiencies": { "Chopping": null, "Mining": null, "Exploring": 3, "Digging": 5, "Fishing":null, "Farming":2 }
+  },
+  {
+    "name": "Kroko",
+    "tier": 3,
+    "type": "water",
+    "trait": "Camouflage",
+    "base_stats": { "POW": 38, "GRT": 34, "AGI": 8, "SMT": 5, "LOT": 10, "LCK": 4 },
+    "job_proficiencies": { "Chopping": 4, "Mining": 3, "Exploring": null, "Digging": 5, "Fishing":null, "Farming":null }
+  },
+  {
+    "name": "Winter",
+    "tier": 3,
+    "type": "earth",
+    "trait": "Cold Resist",
+    "base_stats": { "POW": 38, "GRT": 6, "AGI": 34, "SMT": 5, "LOT": 10, "LCK": 4 },
+    "job_proficiencies": { "Chopping": 5, "Mining": 3, "Exploring": 1, "Digging": null, "Fishing":null, "Farming":null }
+  },
+  {
+    "name": "Toto",
+    "tier": 3,
+    "type": "wind",
+    "trait": "Scouting",
+    "base_stats": { "POW": 5, "GRT": 6, "AGI": 34, "SMT": 36, "LOT": 12, "LCK": 4 },
+    "job_proficiencies": { "Chopping": 4, "Mining": null, "Exploring": 5, "Digging": 4, "Fishing":null, "Farming":null }
   }
 ]

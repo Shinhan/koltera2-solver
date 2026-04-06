@@ -16,11 +16,20 @@ def main():
         "--machine", action="store_true",
         help="Assign awakened creatures to machines before expeditions",
     )
+    parser.add_argument(
+        "--awakened-helpers", action="store_true",
+        help="Only awakened creatures may serve as expedition party helpers",
+    )
     args = parser.parse_args()
 
     creatures = load_creatures()
     expeditions = load_expeditions()
-    result = solve(creatures, expeditions, min_party_size=args.min_party_size, use_machines=args.machine)
+    result = solve(
+        creatures, expeditions,
+        min_party_size=args.min_party_size,
+        use_machines=args.machine,
+        awakened_helpers=args.awakened_helpers,
+    )
 
     print("=" * 52)
     print("SANCTUARY")

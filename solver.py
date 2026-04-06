@@ -125,8 +125,10 @@ def _find_best_for_creature(
     others: list[Creature],
     avail_exps: list[Expedition],
     min_party_size: int = 1,
+    awakened_helpers: bool = False,
 ) -> tuple[Expedition, ExpeditionTier, list[Creature], float] | None:
     """Return (expedition, tier, party, xps) maximising XP/s with creature in the party."""
+    helpers = [c for c in others if c.awakening > 0] if awakened_helpers else others
     best_xps = -1.0
     best: tuple[Expedition, ExpeditionTier, list[Creature], float] | None = None
     # extra = number of companions; party size = 1 + extra (max 3)
@@ -136,9 +138,9 @@ def _find_best_for_creature(
             if extra == 0:
                 party_options = [[creature]]
             else:
-                if len(others) < extra:
+                if len(helpers) < extra:
                     continue
-                party_options = [[creature] + list(comp) for comp in combinations(others, extra)]
+                party_options = [[creature] + list(comp) for comp in combinations(helpers, extra)]
             for party in party_options:
                 tier, xps = _best_tier(party, exp)
                 if xps > best_xps:
@@ -148,7 +150,10 @@ def _find_best_for_creature(
 
 
 def solve_expeditions(
-    pool: list[Creature], expeditions: list[Expedition], min_party_size: int = 1,
+    pool: list[Creature],
+    expeditions: list[Expedition],
+    min_party_size: int = 1,
+    awakened_helpers: bool = False,
 ) -> list[ExpeditionAssignment]:
     """
     Level-priority greedy solver:
@@ -162,7 +167,7 @@ def solve_expeditions(
 
     while available and avail_exps:
         creature = available[0]
-        best = _find_best_for_creature(creature, available[1:], avail_exps, min_party_size)
+        best = _find_best_for_creature(creature, available[1:], avail_exps, min_party_size, awakened_helpers)
         if best is None:
             break
         exp, tier, party, best_xps = best
@@ -190,6 +195,7 @@ def solve(
     expeditions: list[Expedition],
     min_party_size: int = 1,
     use_machines: bool = False,
+    awakened_helpers: bool = False,
 ) -> SolverResult:
     """Run job, sanctuary, optional machine, and expedition assignments."""
     job_assignments = assign_jobs(creatures)
@@ -203,7 +209,7 @@ def solve(
         machine_assignments = assign_machines(remaining)
         remaining = _exclude(remaining, {ma.creature.name for ma in machine_assignments})
 
-    expedition_assignments = solve_expeditions(remaining, expeditions, min_party_size)
+    expedition_assignments = solve_expeditions(remaining, expeditions, min_party_size, awakened_helpers)
     assigned_to_exp = {c.name for ea in expedition_assignments for c in ea.party}
 
     return SolverResult(

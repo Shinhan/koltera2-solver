@@ -48,6 +48,7 @@
 **Expedition solver priority:**
 - Process creatures in order: non-awakened first, then awakened; within each group, lowest level first
 - Ensures non-awakened creatures (who can't go to Sanctuary) are never crowded out by awakened ones
+- `--awakened-helpers` flag: restricts expedition party helpers (companions) to awakened creatures only; the primary creature being assigned is unrestricted
 
 **Expedition tiers:**
 - `xp_reward: null` in a tier means that difficulty is not yet unlocked — skip in solver
