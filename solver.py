@@ -1,6 +1,7 @@
 """Job and expedition assignment solver."""
 from collections import defaultdict
 from itertools import combinations
+from math import ceil
 from statistics import pstdev
 from models import (
     Creature, Expedition, ExpeditionTier, JobAssignment, MachineAssignment,
@@ -157,20 +158,38 @@ def solve_expeditions(
     expeditions: list[Expedition],
     min_party_size: int = 1,
     awakened_helpers: bool = False,
+    fill: bool = False,
 ) -> list[ExpeditionAssignment]:
     """
     Level-priority greedy solver:
       Process creatures from lowest level to highest. Each creature claims the best
       available (expedition, party, tier) that includes them. This ensures low-level
       creatures aren't crowded out of high-XP/s runs by high-stat creatures.
+
+    With fill=True: base min_party_size scales with pool size (40-59 -> 2, 60+ -> 3),
+    and each iteration dynamically raises the minimum to ceil(remaining/expeditions)
+    so that all creatures are guaranteed a slot when the pool started below 60.
     """
     available: list[Creature] = sorted(pool, key=lambda c: (c.awakening, c.level))
     avail_exps: list[Expedition] = list(expeditions)
     assignments: list[ExpeditionAssignment] = []
 
+    n = len(available)
+    if fill:
+        base_min = 3 if n >= 60 else 2 if n >= 40 else 1
+    else:
+        base_min = min_party_size
+
     while available and avail_exps:
+        if fill:
+            needed = ceil(len(available) / len(avail_exps))
+            effective_min = min(max(base_min, needed), 3)
+        else:
+            effective_min = base_min
         creature = available[0]
-        best = _find_best_for_creature(creature, available[1:], avail_exps, min_party_size, awakened_helpers)
+        best = _find_best_for_creature(
+            creature, available[1:], avail_exps, effective_min, awakened_helpers
+        )
         if best is None:
             break
         exp, tier, party, best_xps = best
@@ -217,6 +236,7 @@ def solve(
     use_machines: bool = False,
     awakened_helpers: bool = False,
     dungeon_type: str | None = None,
+    fill_expeditions: bool = False,
 ) -> SolverResult:
     """Run optional dungeon, job, sanctuary, optional machine, and expedition assignments."""
     dungeon_assignment: DungeonAssignment | None = None
@@ -235,7 +255,9 @@ def solve(
         machine_assignments = assign_machines(remaining)
         remaining = _exclude(remaining, {ma.creature.name for ma in machine_assignments})
 
-    expedition_assignments = solve_expeditions(remaining, expeditions, min_party_size, awakened_helpers)
+    expedition_assignments = solve_expeditions(
+        remaining, expeditions, min_party_size, awakened_helpers, fill=fill_expeditions
+    )
     assigned_to_exp = {c.name for ea in expedition_assignments for c in ea.party}
 
     return SolverResult(

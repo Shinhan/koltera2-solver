@@ -51,6 +51,14 @@ def main():
             "(combat: POW/GRT/AGI/SMT; others: SMT/LOT/LCK)"
         ),
     )
+    parser.add_argument(
+        "--fill-expeditions", action="store_true",
+        help=(
+            "Scale min party size by roster size and enforce it dynamically "
+            "to guarantee no unassigned creatures (40-59 available: min 2; "
+            "60+: min 3; dynamic floor = ceil(remaining/expeditions))"
+        ),
+    )
     args = parser.parse_args()
 
     creatures = load_creatures()
@@ -61,6 +69,7 @@ def main():
         use_machines=args.machine,
         awakened_helpers=args.awakened_helpers,
         dungeon_type=args.dungeon,
+        fill_expeditions=args.fill_expeditions,
     )
 
     if result.dungeon_assignment:

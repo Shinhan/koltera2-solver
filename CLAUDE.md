@@ -63,6 +63,15 @@
   - Verified samples: score 888→CFFF, 3135→ABCC, 3795→ABBC, 4796→SABC, 6482→SAAB, 7982→SAAB
 - Dungeon creatures are removed from the expedition pool before solving
 
+**`--fill-expeditions` flag (expedition step):**
+- Scales base `min_party_size` by pool size at the start of expedition allocation:
+  - < 40 creatures: base min = 1 (same as default)
+  - 40–59 creatures: base min = 2
+  - ≥ 60 creatures: base min = 3
+- For pools < 60, also applies a per-iteration dynamic floor: `effective_min = max(base_min, ceil(remaining_creatures / remaining_expeditions))`, capped at 3
+- Guarantees no unassigned creatures when the pool starts below 60 (since 20 expeditions × 3 = 60 max capacity)
+- Overrides `--min-party-size` when fill logic is active
+
 **Expedition solver priority:**
 - Process creatures in order: non-awakened first, then awakened; within each group, lowest level first
 - Ensures non-awakened creatures (who can't go to Sanctuary) are never crowded out by awakened ones

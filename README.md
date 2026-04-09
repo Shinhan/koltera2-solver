@@ -30,6 +30,9 @@ python main.py [--machine] [--min-party-size {1,2,3}] [--awakened-helpers] [--du
 | `--min-party-size N` | Minimum creatures per expedition party (default: 1) |
 | `--awakened-helpers` | Only awakened creatures may serve as party helpers (companions) in expeditions |
 | `--dungeon TYPE` | Pull 3 creatures for a dungeon before expeditions. TYPE is one of: `combat`, `chopping`, `mining`, `digging`, `farming`, `fishing`, `exploring` |
+| `--fill-expeditions` | Scale minimum party size by roster size and dynamically enforce a per-iteration floor to guarantee no unassigned creatures (when pool starts below 60) |
+
+When `--fill-expeditions` is active, the base minimum party size is set by how many creatures are available when expedition assignment begins: fewer than 40 → 1, 40–59 → 2, 60 or more → 3. For pools under 60, a per-iteration check also raises the minimum to `ceil(remaining creatures / remaining expeditions)` as soon as it would otherwise be impossible to assign everyone.
 
 Output shows Sanctuary, Job assignments, Machine assignments (if `--machine`), Dungeon assignment (if `--dungeon`), Expedition assignments, and any unassigned creatures.
 
