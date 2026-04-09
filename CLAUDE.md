@@ -45,6 +45,24 @@
 - Tiebreak: highest awakening, then highest level
 - Machine-assigned creatures are removed from the expedition pool before solving
 
+**Dungeon assignment (optional, `--dungeon` flag, post-machine step):**
+- Types: combat, chopping, mining, digging, farming, fishing, exploring
+- Pulls exactly 3 creatures from the remaining pool (after jobs, sanctuary, machines) just before expeditions
+- Stat weights: combat uses POW+GRT+AGI+SMT equally; all other types use SMT+LOT+LCK equally
+- Picks the 3 creatures with the highest individual dungeon scores; no type/trait bonuses
+- 5 difficulty tiers: 2000, 4000, 6000, 8000, 10000
+- Base XP rates per tier: 0.5, 1.0, 1.5, 2.0, 2.5 (multiplied by grade multiplier)
+- Grade thresholds (score vs difficulty ratio):
+  - S (×2.0): score ≥ 2 × difficulty
+  - A (×1.5): difficulty ≤ score < 2 × difficulty
+  - B (×1.0): 0.6 × difficulty ≤ score < difficulty
+  - C (×0.5): 0.25 × difficulty ≤ score < 0.6 × difficulty
+  - F (×0.25): score < 0.25 × difficulty
+- Combat dungeon Chronicle Rune reward: `max(1, floor(tier_number × 2 × grade_mult))`
+  - tier_rune_bases = [2, 4, 6, 8, 10] for tiers 1–5
+  - Verified samples: score 888→CFFF, 3135→ABCC, 3795→ABBC, 4796→SABC, 6482→SAAB, 7982→SAAB
+- Dungeon creatures are removed from the expedition pool before solving
+
 **Expedition solver priority:**
 - Process creatures in order: non-awakened first, then awakened; within each group, lowest level first
 - Ensures non-awakened creatures (who can't go to Sanctuary) are never crowded out by awakened ones
@@ -68,7 +86,7 @@
 │   ├── creature_levels.json     # Current level + awakening per creature (gitignored)
 │   ├── expeditions.json         # All 20 expeditions
 │   └── expedition_progress.json # Unlocked tier count per expedition (gitignored)
-├── models.py               # Dataclasses: Creature, Expedition, Assignment, MachineAssignment
+├── models.py               # Dataclasses: Creature, Expedition, Assignment, MachineAssignment, DungeonAssignment
 ├── calculator.py           # Score, time, XP/s computations
 ├── solver.py               # Optimization algorithms
 ├── data_loader.py          # JSON I/O, validation

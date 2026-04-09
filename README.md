@@ -7,7 +7,8 @@ Optimally assigns creatures to expeditions and jobs in Koltera 2, maximising XP/
 1. **Jobs** — assigns one creature per job (Chopping, Mining, Exploring, Digging, Fishing, Farming) based on proficiency
 2. **Sanctuary** — assigns awakened creatures (up to 8) from the remaining pool, prioritising highest tier
 3. **Machines** *(optional, `--machine`)* — assigns awakened creatures to 9 machines: Bakery (water), Sawmill (wind), Greenhouse (earth), Smelter (fire), Cooker (fire), and Stone Quarry, Stick Finder, Coal Miner, Refinery (any element)
-4. **Expeditions** — assigns remaining creatures to expeditions in parties of up to 3, picking the best tier and party composition — non-awakened creatures take priority over awakened ones
+4. **Dungeon** *(optional, `--dungeon TYPE`)* — pulls 3 creatures for the dungeon before expeditions, selected by highest dungeon score
+5. **Expeditions** — assigns remaining creatures to expeditions in parties of up to 3, picking the best tier and party composition — non-awakened creatures take priority over awakened ones
 - Maximises XP per second, accounting for type bonuses, trait bonuses, stat weights, and party score
 
 ## Setup
@@ -20,7 +21,7 @@ Optimally assigns creatures to expeditions and jobs in Koltera 2, maximising XP/
 ## Usage
 
 ```
-python main.py [--machine] [--min-party-size {1,2,3}] [--awakened-helpers]
+python main.py [--machine] [--min-party-size {1,2,3}] [--awakened-helpers] [--dungeon TYPE]
 ```
 
 | Flag | Description |
@@ -28,8 +29,17 @@ python main.py [--machine] [--min-party-size {1,2,3}] [--awakened-helpers]
 | `--machine` | Assign awakened creatures to machines after jobs, before expeditions |
 | `--min-party-size N` | Minimum creatures per expedition party (default: 1) |
 | `--awakened-helpers` | Only awakened creatures may serve as party helpers (companions) in expeditions |
+| `--dungeon TYPE` | Pull 3 creatures for a dungeon before expeditions. TYPE is one of: `combat`, `chopping`, `mining`, `digging`, `farming`, `fishing`, `exploring` |
 
-Output shows Sanctuary, Job assignments, Machine assignments (if `--machine`), Expedition assignments, and any unassigned creatures.
+Output shows Sanctuary, Job assignments, Machine assignments (if `--machine`), Dungeon assignment (if `--dungeon`), Expedition assignments, and any unassigned creatures.
+
+## Dungeon mechanics
+
+- **Combat** dungeons score on POW + GRT + AGI + SMT; all other types score on SMT + LOT + LCK
+- 5 difficulty tiers: 2000 / 4000 / 6000 / 8000 / 10000
+- Grade is determined by score vs. difficulty: S (≥2×), A (≥1×), B (≥0.6×), C (≥0.25×), F (<0.25×)
+- Grade multipliers: S=×2, A=×1.5, B=×1, C=×0.5, F=×0.25 — applied to base XP rate and Chronicle Rune count
+- Chronicle Runes (combat only): `max(1, floor(tier × 2 × grade_mult))` per tier
 
 ## Data files
 

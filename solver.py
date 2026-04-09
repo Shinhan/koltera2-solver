@@ -4,9 +4,12 @@ from itertools import combinations
 from statistics import pstdev
 from models import (
     Creature, Expedition, ExpeditionTier, JobAssignment, MachineAssignment,
-    ExpeditionAssignment, SolverResult, JOBS
+    ExpeditionAssignment, DungeonAssignment, SolverResult, JOBS,
 )
-from calculator import xp_per_second, party_score, completion_time
+from calculator import (
+    xp_per_second, party_score, completion_time,
+    creature_dungeon_score, dungeon_tier_results,
+)
 
 
 _MAX_SANCTUARY = 8
@@ -186,6 +189,23 @@ def solve_expeditions(
     return assignments
 
 
+def assign_dungeon(creatures: list[Creature], dungeon_type: str) -> DungeonAssignment:
+    """
+    Select the 3 creatures with the highest dungeon score for the dungeon.
+    Combat: equal weights on POW, GRT, AGI, SMT.
+    Other types: equal weights on SMT, LOT, LCK.
+    """
+    ranked = sorted(creatures, key=lambda c: creature_dungeon_score(c, dungeon_type), reverse=True)
+    party = ranked[:3]
+    score = sum(creature_dungeon_score(c, dungeon_type) for c in party)
+    return DungeonAssignment(
+        dungeon_type=dungeon_type,
+        party=party,
+        party_score=score,
+        tier_results=dungeon_tier_results(score, dungeon_type),
+    )
+
+
 def _exclude(pool: list[Creature], names: set[str]) -> list[Creature]:
     return [c for c in pool if c.name not in names]
 
@@ -196,8 +216,14 @@ def solve(
     min_party_size: int = 1,
     use_machines: bool = False,
     awakened_helpers: bool = False,
+    dungeon_type: str | None = None,
 ) -> SolverResult:
-    """Run job, sanctuary, optional machine, and expedition assignments."""
+    """Run optional dungeon, job, sanctuary, optional machine, and expedition assignments."""
+    dungeon_assignment: DungeonAssignment | None = None
+    if dungeon_type is not None:
+        dungeon_assignment = assign_dungeon(creatures, dungeon_type)
+        creatures = _exclude(creatures, {c.name for c in dungeon_assignment.party})
+
     job_assignments = assign_jobs(creatures)
     remaining = _exclude(creatures, {ja.creature.name for ja in job_assignments})
 
@@ -216,6 +242,7 @@ def solve(
         sanctuary=sanctuary,
         machine_assignments=machine_assignments,
         job_assignments=job_assignments,
+        dungeon_assignment=dungeon_assignment,
         expedition_assignments=expedition_assignments,
         unassigned=_exclude(remaining, assigned_to_exp),
     )

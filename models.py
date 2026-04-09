@@ -5,6 +5,18 @@ from typing import Optional
 
 STATS = ["POW", "GRT", "AGI", "SMT", "LOT", "LCK"]
 JOBS = ["Chopping", "Mining", "Exploring", "Digging", "Fishing", "Farming"]
+DUNGEON_TYPES = ["combat", "chopping", "mining", "digging", "farming", "fishing", "exploring"]
+
+# Stat weights per dungeon type
+DUNGEON_STAT_WEIGHTS: dict[str, list[str]] = {
+    "combat": ["POW", "GRT", "AGI", "SMT"],
+}
+for _d in DUNGEON_TYPES:
+    if _d != "combat":
+        DUNGEON_STAT_WEIGHTS[_d] = ["SMT", "LOT", "LCK"]
+
+DUNGEON_DIFFICULTIES = [2000, 4000, 6000, 8000, 10000]
+DUNGEON_XP_RATES = [0.5, 1.0, 1.5, 2.0, 2.5]  # base XP rate per tier
 
 
 @dataclass
@@ -73,10 +85,30 @@ class ExpeditionAssignment:
 
 
 @dataclass
+class DungeonTierResult:
+    """Computed result for one dungeon difficulty tier."""
+    tier_number: int       # 1-5
+    difficulty: int
+    grade: str             # S / A / B / C / F
+    xp_rate: float         # base XP rate × grade multiplier
+    chronicle_runes: Optional[int]  # combat dungeon only; None otherwise
+
+
+@dataclass
+class DungeonAssignment:
+    """Three creatures assigned to the dungeon, with per-tier results."""
+    dungeon_type: str
+    party: list[Creature]
+    party_score: int
+    tier_results: list[DungeonTierResult]
+
+
+@dataclass
 class SolverResult:
     """Complete solver output: sanctuary, job assignments, expedition assignments, and leftovers."""
     sanctuary: list[Creature]
     machine_assignments: list[MachineAssignment]
     job_assignments: list[JobAssignment]
+    dungeon_assignment: Optional[DungeonAssignment]
     expedition_assignments: list[ExpeditionAssignment]
     unassigned: list[Creature]
