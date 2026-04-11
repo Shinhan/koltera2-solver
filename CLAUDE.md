@@ -75,10 +75,9 @@
 - Guarantees no unassigned creatures when the pool starts below 60 (since 20 expeditions × 3 = 60 max capacity)
 - Overrides `--min-party-size` when fill logic is active
 
-**`--awakened-helpers` flag (affects jobs and expeditions):**
+**`--awakened-helpers` flag (affects jobs only):**
 - **Job assignment**: awakened creatures are always preferred over non-awakened regardless of proficiency; non-awakened only fill a job if no awakened creature is available
-- **Expedition companions**: only awakened creatures may serve as helpers (companions); the primary creature being assigned is unrestricted
-- Intent: reserve all non-awakened creatures for expedition slots so they can level up
+- Expedition companion selection is unaffected; any creature in the pool may be a companion
 
 **Expedition solver priority:**
 - Process creatures in order: non-awakened first, then awakened; within each group, lowest level first

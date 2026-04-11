@@ -135,10 +135,9 @@ def _find_best_for_creature(
     others: list[Creature],
     avail_exps: list[Expedition],
     min_party_size: int = 1,
-    awakened_helpers: bool = False,
 ) -> tuple[Expedition, ExpeditionTier, list[Creature], float] | None:
     """Return (expedition, tier, party, xps) maximising XP/s with creature in the party."""
-    helpers = [c for c in others if c.awakening > 0] if awakened_helpers else others
+    helpers = others
     best_xps = -1.0
     best: tuple[Expedition, ExpeditionTier, list[Creature], float] | None = None
     # extra = number of companions; party size = 1 + extra (max 3)
@@ -163,7 +162,6 @@ def solve_expeditions(
     pool: list[Creature],
     expeditions: list[Expedition],
     min_party_size: int = 1,
-    awakened_helpers: bool = False,
     fill: bool = False,
 ) -> list[ExpeditionAssignment]:
     """
@@ -194,8 +192,13 @@ def solve_expeditions(
             effective_min = base_min
         creature = available[0]
         best = _find_best_for_creature(
-            creature, available[1:], avail_exps, effective_min, awakened_helpers
+            creature, available[1:], avail_exps, effective_min
         )
+        if best is None and effective_min > 1:
+            # Fall back to solo when no companions are available
+            best = _find_best_for_creature(
+                creature, available[1:], avail_exps, 1
+            )
         if best is None:
             break
         exp, tier, party, best_xps = best
@@ -262,7 +265,7 @@ def solve(
         remaining = _exclude(remaining, {ma.creature.name for ma in machine_assignments})
 
     expedition_assignments = solve_expeditions(
-        remaining, expeditions, min_party_size, awakened_helpers, fill=fill_expeditions
+        remaining, expeditions, min_party_size, fill=fill_expeditions
     )
     assigned_to_exp = {c.name for ea in expedition_assignments for c in ea.party}
 
