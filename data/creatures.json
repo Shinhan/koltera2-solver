@@ -510,5 +510,37 @@
     "trait": "Night Vision",
     "base_stats": { "POW": 8, "GRT": 12, "AGI": 24, "SMT": 56, "LOT": 20, "LCK": 52 },
     "job_proficiencies": { "Chopping": null, "Mining": 2, "Exploring": 7, "Digging": null, "Fishing":5, "Farming":null }
+  },
+  {
+    "name": "Snooze",
+    "tier": 4,
+    "type": "fire",
+    "trait": "Poison Resist",
+    "base_stats": { "POW": 54, "GRT": 52, "AGI": 18, "SMT": 12, "LOT": 26, "LCK": 8 },
+    "job_proficiencies": { "Chopping": 7, "Mining": null, "Exploring": null, "Digging": 4, "Fishing":null, "Farming":2 }
+  },
+  {
+    "name": "Pandy",
+    "tier": 4,
+    "type": "water",
+    "trait": "Regeneration",
+    "base_stats": { "POW": 12, "GRT": 24, "AGI": 18, "SMT": 52, "LOT": 56, "LCK": 8 },
+    "job_proficiencies": { "Chopping": null, "Mining": null, "Exploring": 6, "Digging": null, "Fishing":5, "Farming":7 }
+  },
+  {
+    "name": "Terra",
+    "tier": 4,
+    "type": "earth",
+    "trait": "Gatherer",
+    "base_stats": { "POW": 52, "GRT": 56, "AGI": 12, "SMT": 20, "LOT": 24, "LCK": 8 },
+    "job_proficiencies": { "Chopping": 4, "Mining": 7, "Exploring": null, "Digging": 2, "Fishing":null, "Farming":null }
+  },
+  {
+    "name": "Nutty",
+    "tier": 4,
+    "type": "wind",
+    "trait": "Scouting",
+    "base_stats": { "POW": 56, "GRT": 54, "AGI": 18, "SMT": 12, "LOT": 24, "LCK": 8 },
+    "job_proficiencies": { "Chopping": null, "Mining": 4, "Exploring": null, "Digging": 7, "Fishing":null, "Farming":4 }
   }
 ]
