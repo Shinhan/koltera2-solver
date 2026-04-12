@@ -542,5 +542,37 @@
     "trait": "Scouting",
     "base_stats": { "POW": 56, "GRT": 54, "AGI": 18, "SMT": 12, "LOT": 24, "LCK": 8 },
     "job_proficiencies": { "Chopping": null, "Mining": 4, "Exploring": null, "Digging": 7, "Fishing":null, "Farming":4 }
+  },
+  {
+    "name": "Skipper",
+    "tier": 4,
+    "type": "wind",
+    "trait": "Learner",
+    "base_stats": { "POW": 12, "GRT": 8, "AGI": 56, "SMT": 52, "LOT": 24, "LCK": 18 },
+    "job_proficiencies": { "Chopping": null, "Mining": null, "Exploring": 7, "Digging": null, "Fishing":2, "Farming":1 }
+  },
+  {
+    "name": "Joeyroo",
+    "tier": 4,
+    "type": "wind",
+    "trait": "Lucky",
+    "base_stats": { "POW": 52, "GRT": 18, "AGI": 56, "SMT": 12, "LOT": 24, "LCK": 8 },
+    "job_proficiencies": { "Chopping": 7, "Mining": null, "Exploring": 1, "Digging": null, "Fishing":null, "Farming":5 }
+  },
+  {
+    "name": "Chomp",
+    "tier": 4,
+    "type": "fire",
+    "trait": "Camouflage",
+    "base_stats": { "POW": 26, "GRT": 54, "AGI": 18, "SMT": 12, "LOT": 52, "LCK": 8 },
+    "job_proficiencies": { "Chopping": null, "Mining": null, "Exploring": null, "Digging": 1, "Fishing":3, "Farming":7 }
+  },
+  {
+    "name": "Finn",
+    "tier": 4,
+    "type": "fire",
+    "trait": "Water Breathing",
+    "base_stats": { "POW": 8, "GRT": 12, "AGI": 52, "SMT": 20, "LOT": 56, "LCK": 24 },
+    "job_proficiencies": { "Chopping": 4, "Mining": null, "Exploring": 2, "Digging": null, "Fishing":7, "Farming":null }
   }
 ]
