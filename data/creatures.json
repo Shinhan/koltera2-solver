@@ -574,5 +574,389 @@
     "trait": "Water Breathing",
     "base_stats": { "POW": 8, "GRT": 12, "AGI": 52, "SMT": 20, "LOT": 56, "LCK": 24 },
     "job_proficiencies": { "Chopping": 4, "Mining": null, "Exploring": 2, "Digging": null, "Fishing":7, "Farming":null }
+  },
+  {
+    "name": "Porkie",
+    "tier": 4,
+    "type": "fire",
+    "trait": "Hard Shell",
+    "base_stats": { "POW": 56, "GRT": 52, "AGI": 18, "SMT": 12, "LOT": 24, "LCK": 8 },
+    "job_proficiencies": { "Chopping": 3, "Mining": 7, "Exploring": null, "Digging": 5, "Fishing": null, "Farming":null }
+  },
+  {
+    "name": "Mantis",
+    "tier": 4,
+    "type": "earth",
+    "trait": "Learner",
+    "base_stats": { "POW": 56, "GRT": 20, "AGI": 54, "SMT": 12, "LOT": 24, "LCK": 8 },
+    "job_proficiencies": { "Chopping": 7, "Mining": 5, "Exploring": null, "Digging": 3, "Fishing": null, "Farming": null }
+  },
+  {
+    "name": "Pudge",
+    "tier": 4,
+    "type": "fire",
+    "trait": "Gatherer",
+    "base_stats": { "POW": 12, "GRT": 52, "AGI": 18, "SMT": 26, "LOT": 54, "LCK": 8 },
+    "job_proficiencies": { "Chopping": 4, "Mining": null, "Exploring": null, "Digging": 3, "Fishing": null, "Farming": 7 }
+  },
+  {
+    "name": "Rookie",
+    "tier": 4,
+    "type": "earth",
+    "trait": "Gatherer",
+    "base_stats": { "POW": 52, "GRT": 54, "AGI": 18, "SMT": 12, "LOT": 26, "LCK": 8 },
+    "job_proficiencies": { "Chopping": null, "Mining": 1, "Exploring": null, "Digging": 7, "Fishing": null, "Farming": 3 }
+  },
+  {
+    "name": "Chonk",
+    "tier": 4,
+    "type": "wind",
+    "trait": "Hard Shell",
+    "base_stats": { "POW": 54, "GRT": 52, "AGI": 18, "SMT": 12, "LOT": 26, "LCK": 8 },
+    "job_proficiencies": { "Chopping": 2, "Mining": 5, "Exploring": null, "Digging": 7, "Fishing": null, "Farming": null }
+  },
+  {
+    "name": "Wally",
+    "tier": 4,
+    "type": "water",
+    "trait": "Cold Resist",
+    "base_stats": { "POW": 8, "GRT": 24, "AGI": 20, "SMT": 14, "LOT": 54, "LCK": 52 },
+    "job_proficiencies": { "Chopping": null, "Mining": null, "Exploring": 4, "Digging": 1, "Fishing": 7, "Farming": null }
+  },
+  {
+    "name": "Nari",
+    "tier": 4,
+    "type": "water",
+    "trait": "Water Breathing",
+    "base_stats": { "POW": 8, "GRT": 12, "AGI": 54, "SMT": 20, "LOT": 52, "LCK": 26 },
+    "job_proficiencies": { "Chopping": null, "Mining": null, "Exploring": 4, "Digging": null, "Fishing": 7, "Farming": 1 }
+  },
+  {
+    "name": "Twilight",
+    "tier": 4,
+    "type": "wind",
+    "trait": "Night Vision",
+    "base_stats": { "POW": 8, "GRT": 12, "AGI": 52, "SMT": 56, "LOT": 20, "LCK": 24 },
+    "job_proficiencies": { "Chopping": null, "Mining": null, "Exploring": 7, "Digging": null, "Fishing": 2, "Farming": 5 }
+  },
+  {
+    "name": "Kango",
+    "tier": 5,
+    "type": "fire",
+    "trait": "Regeneration",
+    "base_stats": { "POW": 78, "GRT": 74, "AGI": 36, "SMT": 22, "LOT": 65, "LCK": 14 },
+    "job_proficiencies": { "Chopping": 1, "Mining": 9, "Exploring": null, "Digging": 4, "Fishing": null, "Farming": 5 }
+  },
+  {
+    "name": "Brunk",
+    "tier": 5,
+    "type": "wind",
+    "trait": "Hard Shell",
+    "base_stats": { "POW": 78, "GRT": 74, "AGI": 36, "SMT": 22, "LOT": 65, "LCK": 14 },
+    "job_proficiencies": { "Chopping": 3, "Mining": 9, "Exploring": null, "Digging": 7, "Fishing": null, "Farming": 6 }
+  },
+  {
+    "name": "Astra",
+    "tier": 5,
+    "type": "fire",
+    "trait": "Night Vision",
+    "base_stats": { "POW": 36, "GRT": 22, "AGI": 14, "SMT": 76, "LOT": 72, "LCK": 68 },
+    "job_proficiencies": { "Chopping": null, "Mining": 9, "Exploring": 6, "Digging": null, "Fishing": 5, "Farming": 2 }
+  },
+  {
+    "name": "Shelldon",
+    "tier": 5,
+    "type": "water",
+    "trait": "Hard Shell",
+    "base_stats": { "POW": 74, "GRT": 78, "AGI": 34, "SMT": 20, "LOT": 66, "LCK": 14 },
+    "job_proficiencies": { "Chopping": 2, "Mining": 9, "Exploring": null, "Digging": 4, "Fishing": null, "Farming": 6 }
+  },
+  {
+    "name": "Ruff",
+    "tier": 5,
+    "type": "fire",
+    "trait": "Tracking",
+    "base_stats": { "POW": 78, "GRT": 72, "AGI": 36, "SMT": 20, "LOT": 65, "LCK": 14 },
+    "job_proficiencies": { "Chopping": 9, "Mining": 2, "Exploring": null, "Digging": 4, "Fishing": null, "Farming": 6 }
+  },
+  {
+    "name": "Skitter",
+    "tier": 5,
+    "type": "earth",
+    "trait": "Camouflage",
+    "base_stats": { "POW": 72, "GRT": 36, "AGI": 78, "SMT": 22, "LOT": 65, "LCK": 14 },
+    "job_proficiencies": { "Chopping": 9, "Mining": null, "Exploring": 2, "Digging": 6, "Fishing": null, "Farming": 5 }
+  },
+  {
+    "name": "Naria",
+    "tier": 5,
+    "type": "earth",
+    "trait": "Camouflage",
+    "base_stats": { "POW": 78, "GRT": 36, "AGI": 72, "SMT": 20, "LOT": 65, "LCK": 14 },
+    "job_proficiencies": { "Chopping": 9, "Mining": 7, "Exploring": null, "Digging": 5, "Fishing": null, "Farming": 3 }
+  },
+  {
+    "name": "Twitch",
+    "tier": 5,
+    "type": "wind",
+    "trait": "Night Vision",
+    "base_stats": { "POW": 14, "GRT": 22, "AGI": 74, "SMT": 78, "LOT": 36, "LCK": 65 },
+    "job_proficiencies": { "Chopping": 4, "Mining": 1, "Exploring": 9, "Digging": null, "Fishing": 4, "Farming": null }
+  },
+  {
+    "name": "Mothie",
+    "tier": 5,
+    "type": "wind",
+    "trait": "Poison Resist",
+    "base_stats": { "POW": 14, "GRT": 20, "AGI": 74, "SMT": 76, "LOT": 36, "LCK": 66 },
+    "job_proficiencies": { "Chopping": null, "Mining": null, "Exploring": 9, "Digging": 5, "Fishing": 8, "Farming": 6 }
+  },
+  {
+    "name": "Snowby",
+    "tier": 5,
+    "type": "water",
+    "trait": "Cold Resist",
+    "base_stats": { "POW": 14, "GRT": 20, "AGI": 78, "SMT": 72, "LOT": 36, "LCK": 65 },
+    "job_proficiencies": { "Chopping": 5, "Mining": null, "Exploring": 9, "Digging": null, "Fishing": 1, "Farming": 4 }
+  },
+  {
+    "name": "Fleece",
+    "tier": 5,
+    "type": "water",
+    "trait": "Learner",
+    "base_stats": { "POW": 20, "GRT": 65, "AGI": 36, "SMT": 72, "LOT": 78, "LCK": 16 },
+    "job_proficiencies": { "Chopping": null, "Mining": null, "Exploring": 5, "Digging": 7, "Fishing": 2, "Farming": 9 }
+  },
+  {
+    "name": "Bram",
+    "tier": 5,
+    "type": "fire",
+    "trait": "Hard Shell",
+    "base_stats": { "POW": 20, "GRT": 65, "AGI": 36, "SMT": 72, "LOT": 78, "LCK": 14 },
+    "job_proficiencies": { "Chopping": 1, "Mining": null, "Exploring": 5, "Digging": null, "Fishing": 6, "Farming": 9 }
+  },
+  {
+    "name": "Porkchop",
+    "tier": 5,
+    "type": "earth",
+    "trait": "Cold Resist",
+    "base_stats": { "POW": 20, "GRT": 74, "AGI": 34, "SMT": 66, "LOT": 76, "LCK": 14 },
+    "job_proficiencies": { "Chopping": null, "Mining": 5, "Exploring": null, "Digging": 2, "Fishing": 6, "Farming": 9 }
+  },
+  {
+    "name": "Wooly",
+    "tier": 5,
+    "type": "wind",
+    "trait": "Heat Resist",
+    "base_stats": { "POW": 20, "GRT": 66, "AGI": 34, "SMT": 74, "LOT": 76, "LCK": 14 },
+    "job_proficiencies": { "Chopping": null, "Mining": null, "Exploring": 3, "Digging": 7, "Fishing": 5, "Farming": 9 }
+  },
+  {
+    "name": "Bandit",
+    "tier": 5,
+    "type": "fire",
+    "trait": "Camouflage",
+    "base_stats": { "POW": 72, "GRT": 36, "AGI": 78, "SMT": 22, "LOT": 65, "LCK": 14 },
+    "job_proficiencies": { "Chopping": 6, "Mining": 2, "Exploring": 6, "Digging": 9, "Fishing": null, "Farming": null }
+  },
+  {
+    "name": "Bill",
+    "tier": 5,
+    "type": "earth",
+    "trait": "Scouting",
+    "base_stats": { "POW": 78, "GRT": 74, "AGI": 34, "SMT": 20, "LOT": 65, "LCK": 14 },
+    "job_proficiencies": { "Chopping": 3, "Mining": 1, "Exploring": null, "Digging": 9, "Fishing": null, "Farming": 4 }
+  },
+  {
+    "name": "Scruff",
+    "tier": 5,
+    "type": "earth",
+    "trait": "Tracking",
+    "base_stats": { "POW": 76, "GRT": 74, "AGI": 66, "SMT": 20, "LOT": 34, "LCK": 14 },
+    "job_proficiencies": { "Chopping": 8, "Mining": 4, "Exploring": 1, "Digging": 9, "Fishing": null, "Farming": null }
+  },
+  {
+    "name": "Floe",
+    "tier": 5,
+    "type": "water",
+    "trait": "Scouting",
+    "base_stats": { "POW": 14, "GRT": 78, "AGI": 38, "SMT": 22, "LOT": 75, "LCK": 68 },
+    "job_proficiencies": { "Chopping": null, "Mining": 2, "Exploring": 5, "Digging": null, "Fishing": 9, "Farming": 7 }
+  },
+  {
+    "name": "Blorp",
+    "tier": 5,
+    "type": "water",
+    "trait": "Learner",
+    "base_stats": { "POW": 14, "GRT": 36, "AGI": 22, "SMT": 65, "LOT": 72, "LCK": 78 },
+    "job_proficiencies": { "Chopping": null, "Mining": null, "Exploring": 4, "Digging": 8, "Fishing": 9, "Farming": 1 }
+  },
+  {
+    "name": "Zorb",
+    "tier": 5,
+    "type": "water",
+    "trait": "Water Breathing",
+    "base_stats": { "POW": 14, "GRT": 72, "AGI": 65, "SMT": 20, "LOT": 78, "LCK": 36 },
+    "job_proficiencies": { "Chopping": null, "Mining": 3, "Exploring": 5, "Digging": null, "Fishing": 9, "Farming": 8 }
+  },
+  {
+    "name": "Ivan",
+    "tier": 6,
+    "type": "earth",
+    "trait": "Gatherer",
+    "base_stats": { "POW": 96, "GRT": 94, "AGI": 52, "SMT": 36, "LOT": 88, "LCK": 24 },
+    "job_proficiencies": { "Chopping": 5, "Mining": 10, "Exploring": 6, "Digging": 8, "Fishing": 7, "Farming": null }
+  },
+  {
+    "name": "Clad",
+    "tier": 6,
+    "type": "earth",
+    "trait": "Hard Shell",
+    "base_stats": { "POW": 94, "GRT": 98, "AGI": 36, "SMT": 52, "LOT": 88, "LCK": 22 },
+    "job_proficiencies": { "Chopping": 8, "Mining": 10, "Exploring": null, "Digging": 5, "Fishing": 8, "Farming": 5 }
+  },
+  {
+    "name": "Kragg",
+    "tier": 6,
+    "type": "earth",
+    "trait": "Hard Shell",
+    "base_stats": { "POW": 92, "GRT": 98, "AGI": 52, "SMT": 36, "LOT": 88, "LCK": 22 },
+    "job_proficiencies": { "Chopping": null, "Mining": 10, "Exploring": 6, "Digging": 8, "Fishing": 5, "Farming": 4 }
+  },
+  {
+    "name": "Gale",
+    "tier": 6,
+    "type": "wind",
+    "trait": "Tracking",
+    "base_stats": { "POW": 24, "GRT": 36, "AGI": 94, "SMT": 98, "LOT": 52, "LCK": 88 },
+    "job_proficiencies": { "Chopping": 3, "Mining": 5, "Exploring": 10, "Digging": 7, "Fishing": 2, "Farming": null }
+  },
+  {
+    "name": "Lilith",
+    "tier": 6,
+    "type": "wind",
+    "trait": "Gatherer",
+    "base_stats": { "POW": 24, "GRT": 36, "AGI": 92, "SMT": 98, "LOT": 52, "LCK": 88 },
+    "job_proficiencies": { "Chopping": 5, "Mining": null, "Exploring": 10, "Digging": 8, "Fishing": 3, "Farming": 5 }
+  },
+  {
+    "name": "Orango",
+    "tier": 6,
+    "type": "fire",
+    "trait": "Learner",
+    "base_stats": { "POW": 34, "GRT": 22, "AGI": 98, "SMT": 94, "LOT": 52, "LCK": 86 },
+    "job_proficiencies": { "Chopping": 8, "Mining": 2, "Exploring": 10, "Digging": 4, "Fishing": 6, "Farming": null }
+  },
+  {
+    "name": "Rocket",
+    "tier": 6,
+    "type": "wind",
+    "trait": "Scouting",
+    "base_stats": { "POW": 34, "GRT": 22, "AGI": 100, "SMT": 96, "LOT": 88, "LCK": 52 },
+    "job_proficiencies": { "Chopping": null, "Mining": 4, "Exploring": 10, "Digging": 3, "Fishing": 6, "Farming": 8 }
+  },
+  {
+    "name": "Kong",
+    "tier": 6,
+    "type": "wind",
+    "trait": "Poison Resist",
+    "base_stats": { "POW": 98, "GRT": 88, "AGI": 92, "SMT": 36, "LOT": 54, "LCK": 22 },
+    "job_proficiencies": { "Chopping": 10, "Mining": 5, "Exploring": 6, "Digging": 3, "Fishing": null, "Farming": 1 }
+  },
+  {
+    "name": "Rusty",
+    "tier": 6,
+    "type": "fire",
+    "trait": "Regeneration",
+    "base_stats": { "POW": 96, "GRT": 94, "AGI": 88, "SMT": 34, "LOT": 52, "LCK": 22 },
+    "job_proficiencies": { "Chopping": 10, "Mining": null, "Exploring": 4, "Digging": 6, "Fishing": 5, "Farming": 8 }
+  },
+  {
+    "name": "Blitz",
+    "tier": 6,
+    "type": "water",
+    "trait": "Cold Resist",
+    "base_stats": { "POW": 98, "GRT": 86, "AGI": 94, "SMT": 34, "LOT": 52, "LCK": 22 },
+    "job_proficiencies": { "Chopping": 10, "Mining": 6, "Exploring": 7, "Digging": null, "Fishing": 4, "Farming": 9 }
+  },
+  {
+    "name": "Ravager",
+    "tier": 6,
+    "type": "fire",
+    "trait": "Tracking",
+    "base_stats": { "POW": 98, "GRT": 94, "AGI": 86, "SMT": 34, "LOT": 52, "LCK": 22 },
+    "job_proficiencies": { "Chopping": 10, "Mining": 8, "Exploring": 5, "Digging": 6, "Fishing": 3, "Farming": null }
+  },
+  {
+    "name": "Cackle",
+    "tier": 6,
+    "type": "water",
+    "trait": "Scouting",
+    "base_stats": { "POW": 98, "GRT": 94, "AGI": 88, "SMT": 58, "LOT": 38, "LCK": 24 },
+    "job_proficiencies": { "Chopping": null, "Mining": 2, "Exploring": 2, "Digging": 10, "Fishing": 8, "Farming": 5 }
+  },
+  {
+    "name": "Hedge",
+    "tier": 6,
+    "type": "fire",
+    "trait": "Poison Resist",
+    "base_stats": { "POW": 96, "GRT": 36, "AGI": 92, "SMT": 88, "LOT": 52, "LCK": 22 },
+    "job_proficiencies": { "Chopping": 1, "Mining": 2, "Exploring": null, "Digging": 10, "Fishing": 4, "Farming": 6 }
+  },
+  {
+    "name": "Quill",
+    "tier": 6,
+    "type": "earth",
+    "trait": "Hard Shell",
+    "base_stats": { "POW": 98, "GRT": 86, "AGI": 94, "SMT": 34, "LOT": 52, "LCK": 22 },
+    "job_proficiencies": { "Chopping": 8, "Mining": 7, "Exploring": 2, "Digging": 10, "Fishing": null, "Farming": 5 }
+  },
+  {
+    "name": "Sarge",
+    "tier": 6,
+    "type": "water",
+    "trait": "Water Breathing",
+    "base_stats": { "POW": 86, "GRT": 22, "AGI": 36, "SMT": 52, "LOT": 98, "LCK": 92 },
+    "job_proficiencies": { "Chopping": 2, "Mining": 4, "Exploring": 7, "Digging": null, "Fishing": 10, "Farming": 8 }
+  },
+  {
+    "name": "Tooth",
+    "tier": 6,
+    "type": "water",
+    "trait": "Water Breathing",
+    "base_stats": { "POW": 34, "GRT": 22, "AGI": 88, "SMT": 52, "LOT": 96, "LCK": 94 },
+    "job_proficiencies": { "Chopping": 6, "Mining": 8, "Exploring": null, "Digging": 4, "Fishing": 10, "Farming": 4 }
+  },
+  {
+    "name": "Coralite",
+    "tier": 6,
+    "type": "wind",
+    "trait": "Cold Resist",
+    "base_stats": { "POW": 22, "GRT": 90, "AGI": 36, "SMT": 52, "LOT": 96, "LCK": 88 },
+    "job_proficiencies": { "Chopping": 2, "Mining": 4, "Exploring": 5, "Digging": 8, "Fishing": 10, "Farming": null }
+  },
+  {
+    "name": "Firebelly",
+    "tier": 6,
+    "type": "fire",
+    "trait": "Heat Resist",
+    "base_stats": { "POW": 34, "GRT": 86, "AGI": 52, "SMT": 94, "LOT": 98, "LCK": 24 },
+    "job_proficiencies": { "Chopping": 7, "Mining": 5, "Exploring": 3, "Digging": 7, "Fishing": null, "Farming": 10 }
+  },
+  {
+    "name": "Midnight",
+    "tier": 6,
+    "type": "earth",
+    "trait": "Lucky",
+    "base_stats": { "POW": 34, "GRT": 52, "AGI": 22, "SMT": 94, "LOT": 98, "LCK": 86 },
+    "job_proficiencies": { "Chopping": 4, "Mining": 8, "Exploring": 5, "Digging": null, "Fishing": 2, "Farming": 10 }
+  },
+  {
+    "name": "Pippy",
+    "tier": 6,
+    "type": "earth",
+    "trait": "Gatherer",
+    "base_stats": { "POW": 22, "GRT": 88, "AGI": 34, "SMT": 92, "LOT": 96, "LCK": 52 },
+    "job_proficiencies": { "Chopping": 2, "Mining": null, "Exploring": 8, "Digging": 5, "Fishing": 8, "Farming": 10 }
   }
 ]
